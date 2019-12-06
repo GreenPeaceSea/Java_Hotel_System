@@ -15,8 +15,7 @@ public class Rooms_Class {
     
     my_SQL_Connect_Class mycon1 = new my_SQL_Connect_Class();
     
-    // метод за извеждане на типовете стаи в таблица
-    public void addingTypeOfRoomsIntoTable(JTable myGuestTable) // методът 'addingItemsIntoTable(JTable myGuestTable)' от GuestClass
+    public void addingTypeOfRoomsIntoTable(JTable myGuestTable) 
     {                        
         String slctQry_1 = "SELECT * FROM `roomtype`";
         try {
@@ -26,7 +25,7 @@ public class Rooms_Class {
             Object[] line;
             while(ResSet_1.next() )
             {
-                line = new Object[3]; // Rid, Rlabel, Rprice
+                line = new Object[3]; 
                 line[0] = ResSet_1.getInt(1);
                 line[1] = ResSet_1.getString(2);
                 line[2] = ResSet_1.getString(3);
@@ -40,7 +39,6 @@ public class Rooms_Class {
     }
     
     
-    // метод за извеждане на стаите в таблица
     public void addingRoomsIntoTable(JTable myGuestTable) 
     {                        
         String slctQry_1 = "SELECT * FROM `rooms`";
@@ -65,7 +63,6 @@ public class Rooms_Class {
         }
     }
     
-    // метод за попълване на комбобокса със id-тата на типовете стаи 
     public void addingTypeOfRoomsIntoComboBox(JComboBox myComboBox) 
     {                        
         String slctQry_1 = "SELECT * FROM `roomtype`";
@@ -82,11 +79,8 @@ public class Rooms_Class {
         }
     }
     
-    
-    //метод за добавяне на нова стая
     public boolean AddingRooms(int number, int room_Type, String GSM)
     {
-         // PreparedStatement PpdSt_1 = null;
         ResultSet RstSt_1 = null;
         String qry = "INSERT INTO `rooms`(`Rnumber`, `Rtype`, `RGSM`, `Rreserved`) VALUES (?,?,?,?)";
         
@@ -96,11 +90,9 @@ public class Rooms_Class {
             PpdSt_1.setInt(1, number);
             PpdSt_1.setInt(2, room_Type);
             PpdSt_1.setString(3, GSM);
-            
-            //добавяйки нова стая Rreserved колоната ще бъде сетната на 'Not Free'              
+                         
             PpdSt_1.setString(4, "Not Free");
              
-            //return true;
             return (PpdSt_1.executeUpdate()>0);            
             
         } catch (SQLException ex) {
@@ -110,10 +102,9 @@ public class Rooms_Class {
     }
     
     
-    //метод за 'корекция' на стая
-    public boolean editingSelectedRoom(int number, int room_Type, String GSM, String isFree) //методът editingSelectedGuest() от GuestClass
+    public boolean editingSelectedRoom(int number, int room_Type, String GSM, String isFree) 
     {
-        // PreparedStatement PpdSt_1 = null;
+
         ResultSet RstSt_1 = null;
         String qry_editingSelectedGuest = "UPDATE `rooms` SET `Rtype`=?,`RGSM`=?,`Rreserved`=? WHERE `Rnumber`=?";
         
@@ -134,11 +125,9 @@ public class Rooms_Class {
     }
     
     
-    
-    //метод за 'премахване' на стая
-    public boolean delRoom(int rNumber) //методът delGuest() от GuestClass
-    {
-        // PreparedStatement PpdSt_1 = null;
+
+    public boolean delRoom(int rNumber) 
+    {        
         ResultSet RstSt_1 = null;
         String qryDELETE = "DELETE FROM `rooms` WHERE `Rnumber`=?";
         
@@ -154,4 +143,56 @@ public class Rooms_Class {
             return false;
         }  
     }
+
+
+    public boolean setingRoomToReserved(int number, String isFree) 
+    {
+
+        ResultSet RstSt_1 = null;
+        String qry_editingSelectedGuest = "UPDATE `rooms` SET `Rreserved`=? WHERE `Rnumber`=?";
+        
+        try {
+            PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qry_editingSelectedGuest);
+            
+            
+            PpdSt_1.setString(1, isFree);
+            PpdSt_1.setInt(2, number);
+            
+            return (PpdSt_1.executeUpdate() > 0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }  
+    }
+        
+    
+    public String isRoomToReserved(int number) 
+    {
+
+        ResultSet RstSt_1 = null;
+        String qry_editingSelectedGuest = "SELECT `Rreserved` FROM `rooms` WHERE `Rnumber` = ?";
+        
+        try {
+            PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qry_editingSelectedGuest);
+            
+            
+            PpdSt_1.setInt(1, number);
+            RstSt_1 = PpdSt_1.executeQuery();
+            
+            if(RstSt_1.next())
+            {
+                return RstSt_1.getString(1);
+            }else
+            {
+                return "";
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }  
+    }
+    
 }

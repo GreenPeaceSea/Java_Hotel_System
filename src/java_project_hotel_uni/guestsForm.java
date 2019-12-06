@@ -10,10 +10,7 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author kom6i
- */
+
 public class guestsForm extends javax.swing.JFrame {
 
     GuestClass gcObj1 = new GuestClass();
@@ -21,7 +18,9 @@ public class guestsForm extends javax.swing.JFrame {
     public guestsForm() {
         initComponents();
         
-        gcObj1.addingItemsIntoTable(jTable1); //извикване на метода от GuestClass за добавяне на айтемите в таблицата
+        gcObj1.addingItemsIntoTable(jTable1); 
+        
+        // textBox1_Guest_Rating.setEditable(false);
     }
 
     /**
@@ -54,6 +53,8 @@ public class guestsForm extends javax.swing.JFrame {
         SuccessOrNot_label1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btn1_guests_clear1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        textBox1_Guest_Rating = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -92,7 +93,7 @@ public class guestsForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Guest ID", "First Name", "Last Name", "GSM", "E-Mail"
+                "Guest ID", "First Name", "Last Name", "GSM", "E-Mail", "Guest Rating"
             }
         )
 
@@ -106,6 +107,7 @@ public class guestsForm extends javax.swing.JFrame {
 
     btn1_guests_creation.setBackground(new java.awt.Color(102, 0, 102));
     btn1_guests_creation.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+    btn1_guests_creation.setForeground(new java.awt.Color(255, 255, 255));
     btn1_guests_creation.setText("New Guest Creation");
     btn1_guests_creation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     btn1_guests_creation.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +118,7 @@ public class guestsForm extends javax.swing.JFrame {
 
     btn1_guests_edit.setBackground(new java.awt.Color(102, 0, 102));
     btn1_guests_edit.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+    btn1_guests_edit.setForeground(new java.awt.Color(255, 255, 255));
     btn1_guests_edit.setText("Edit Existing Guest");
     btn1_guests_edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     btn1_guests_edit.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +129,7 @@ public class guestsForm extends javax.swing.JFrame {
 
     btn1_guests_remove.setBackground(new java.awt.Color(102, 0, 102));
     btn1_guests_remove.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+    btn1_guests_remove.setForeground(new java.awt.Color(255, 255, 255));
     btn1_guests_remove.setText("Remove Existing Guest");
     btn1_guests_remove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     btn1_guests_remove.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +140,7 @@ public class guestsForm extends javax.swing.JFrame {
 
     btn1_guests_clear.setBackground(new java.awt.Color(102, 0, 102));
     btn1_guests_clear.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+    btn1_guests_clear.setForeground(new java.awt.Color(255, 255, 255));
     btn1_guests_clear.setText("Clear");
     btn1_guests_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     btn1_guests_clear.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +154,7 @@ public class guestsForm extends javax.swing.JFrame {
 
     btn1_guests_clear1.setBackground(new java.awt.Color(102, 0, 102));
     btn1_guests_clear1.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+    btn1_guests_clear1.setForeground(new java.awt.Color(255, 255, 255));
     btn1_guests_clear1.setText("REFRESH");
     btn1_guests_clear1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     btn1_guests_clear1.addActionListener(new java.awt.event.ActionListener() {
@@ -157,48 +163,63 @@ public class guestsForm extends javax.swing.JFrame {
         }
     });
 
+    jLabel8.setFont(new java.awt.Font("Lucida Bright", 0, 14)); // NOI18N
+    jLabel8.setText("Rating:");
+
+    textBox1_Guest_Rating.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+    textBox1_Guest_Rating.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            textBox1_Guest_RatingActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGap(74, 74, 74)
-            .addComponent(jLabel7)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGroup(jPanel1Layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel3)
+                .addComponent(jLabel5)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btn1_guests_clear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn1_guests_remove, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn1_guests_creation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn1_guests_edit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SuccessOrNot_label1))
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addComponent(jLabel2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textBox1_Guest_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addComponent(jLabel3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(textBox1_Guest_First_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel6))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textBox1_Guest_EMail, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textBox1_Guest_GSM, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textBox1_Guest_Last_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btn1_guests_clear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn1_guests_remove, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btn1_guests_creation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn1_guests_edit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(44, 44, 44)
+                            .addComponent(SuccessOrNot_label1))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(28, 28, 28)
+                                .addComponent(textBox1_Guest_Rating, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textBox1_Guest_EMail, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textBox1_Guest_GSM, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(textBox1_Guest_First_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(textBox1_Guest_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textBox1_Guest_Last_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
             .addGap(18, 18, 18)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addComponent(btn1_guests_clear1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7)
+                        .addComponent(btn1_guests_clear1))
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addContainerGap())
     );
@@ -206,38 +227,44 @@ public class guestsForm extends javax.swing.JFrame {
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jLabel7)
-            .addGap(19, 19, 19)
-            .addComponent(btn1_guests_clear1)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel7)
+                .addComponent(jLabel2)
+                .addComponent(textBox1_Guest_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(textBox1_Guest_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(25, 25, 25)
+                    .addGap(19, 19, 19)
+                    .addComponent(btn1_guests_clear1))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
                         .addComponent(textBox1_Guest_First_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(27, 27, 27)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(textBox1_Guest_Last_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(24, 24, 24)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textBox1_Guest_Last_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4)
                         .addComponent(textBox1_Guest_GSM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(24, 24, 24)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(textBox1_Guest_EMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textBox1_Guest_EMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(textBox1_Guest_Rating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(131, 131, 131)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn1_guests_creation)
                         .addComponent(SuccessOrNot_label1))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(btn1_guests_edit))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(btn1_guests_remove)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -261,16 +288,15 @@ public class guestsForm extends javax.swing.JFrame {
     pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // премахване текста от текстовите полета / задава "" стойност
     private void btn1_guests_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_guests_clearActionPerformed
         textBox1_Guest_ID.setText("");
         textBox1_Guest_First_Name.setText("");
         textBox1_Guest_Last_Name.setText("");
         textBox1_Guest_GSM.setText("");
         textBox1_Guest_EMail.setText("");
+        textBox1_Guest_Rating.setText("");
     }//GEN-LAST:event_btn1_guests_clearActionPerformed
 
-    // извиква метода за премахване на гост
     private void btn1_guests_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_guests_removeActionPerformed
         int gID = Integer.valueOf(textBox1_Guest_ID.getText());
         if(gcObj1.delGuest(gID))
@@ -282,21 +308,20 @@ public class guestsForm extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_btn1_guests_removeActionPerformed
 
-    // редактиране на гост 
     private void btn1_guests_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_guests_editActionPerformed
         int gID = Integer.valueOf(textBox1_Guest_ID.getText());
         String _FN = textBox1_Guest_First_Name.getText();
         String _LN = textBox1_Guest_Last_Name.getText();
         String _GSM = textBox1_Guest_GSM.getText();
         String _Email = textBox1_Guest_EMail.getText();
+        String _Rating = textBox1_Guest_Rating.getText();
 
         if(_FN.isEmpty() || _LN.isEmpty() || _GSM.isEmpty() || _Email.isEmpty() )
         {
             showMessageDialog(null, "Please fill all of the text boxes! ", "Error", ERROR_MESSAGE);
-            // return;
         }else
         {
-            if(gcObj1.editingSelectedGuest(gID, _FN, _LN, _GSM, _Email))
+            if(gcObj1.editingSelectedGuest(gID, _FN, _LN, _GSM, _Email, _Rating))
             {
                 showMessageDialog(null, "You have edited it successfully! ", "Successful", INFORMATION_MESSAGE);
             }else
@@ -316,10 +341,10 @@ public class guestsForm extends javax.swing.JFrame {
         if(_FN.isEmpty() || _LN.isEmpty() || _GSM.isEmpty() || _Email.isEmpty() )
         {
             showMessageDialog(null, "Please fill all of the text boxes! ", "Error", ERROR_MESSAGE);
-            return; // спира изпълнението на метода и по нататъшния код
+            return; 
         }
 
-        if(gcObj1.AddingGuests(_FN, _LN, _GSM, _Email)) //извеждане в лейбъла дали информацията е добавена успешно
+        if(gcObj1.AddingGuests(_FN, _LN, _GSM, _Email)) 
         {
             SuccessOrNot_label1.setText("Successfully Added");
         }else
@@ -330,24 +355,35 @@ public class guestsForm extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
-        DefaultTableModel DfTblMl_1 = (DefaultTableModel)jTable1.getModel(); //JTable моделът
+        DefaultTableModel DfTblMl_1 = (DefaultTableModel)jTable1.getModel(); 
 
-        int selectedLine = jTable1.getSelectedRow(); //получаване и съхраняване на row индекса
+        int selectedLine = jTable1.getSelectedRow(); 
 
-        textBox1_Guest_ID.setText(DfTblMl_1.getValueAt(selectedLine, 0).toString()); //промяна и извеждане на текста на полето според селектирания ред в таблицата
+        textBox1_Guest_ID.setText(DfTblMl_1.getValueAt(selectedLine, 0).toString()); 
         textBox1_Guest_First_Name.setText(DfTblMl_1.getValueAt(selectedLine, 1).toString());
         textBox1_Guest_Last_Name.setText(DfTblMl_1.getValueAt(selectedLine, 2).toString());
         textBox1_Guest_GSM.setText(DfTblMl_1.getValueAt(selectedLine, 3).toString());
         textBox1_Guest_EMail.setText(DfTblMl_1.getValueAt(selectedLine, 4).toString());
+        textBox1_Guest_Rating.setText(DfTblMl_1.getValueAt(selectedLine, 5).toString());
+        
+        int dangerousRating = Integer.valueOf(textBox1_Guest_Rating.getText());
+        if(dangerousRating<0)
+        {
+            showMessageDialog(null, "Hazard guest! ", "Error", ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jTable1MouseClicked
 
-    
-    // обновление на информацията в таблицата спрямо промените
+        
     private void btn1_guests_clear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_guests_clear1ActionPerformed
-        jTable1.setModel(new DefaultTableModel(null, new Object[]{"Guest ID", "First Name", "Last Name", "GSM", "E-Mail"})); 
+      jTable1.setModel(new DefaultTableModel(null, new Object[]{"Guest ID", "First Name", "Last Name", "GSM", "E-Mail", "Guest Rating"})); 
         
         gcObj1.addingItemsIntoTable(jTable1);
     }//GEN-LAST:event_btn1_guests_clear1ActionPerformed
+
+    private void textBox1_Guest_RatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBox1_Guest_RatingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBox1_Guest_RatingActionPerformed
 
     
     
@@ -400,6 +436,7 @@ public class guestsForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -408,5 +445,6 @@ public class guestsForm extends javax.swing.JFrame {
     private javax.swing.JTextField textBox1_Guest_GSM;
     private javax.swing.JTextField textBox1_Guest_ID;
     private javax.swing.JTextField textBox1_Guest_Last_Name;
+    private javax.swing.JTextField textBox1_Guest_Rating;
     // End of variables declaration//GEN-END:variables
 }

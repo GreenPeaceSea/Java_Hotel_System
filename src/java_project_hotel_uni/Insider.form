@@ -27,11 +27,6 @@
             <Property name="text" type="java.lang.String" value="What do You want to do?"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItem_CreateOwners">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Create Owners"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Rooms">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Rooms"/>

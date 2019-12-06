@@ -10,18 +10,14 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
-
-// създавам и нова таблица във phpMyAdmin 'guestTable'
 public class GuestClass {
     my_SQL_Connect_Class mycon1 = new my_SQL_Connect_Class();
     
     
-    //метод за 'добавяне' на гост
     public boolean AddingGuests(String FN, String LN, String GSM, String Email)
-    {
-        // PreparedStatement PpdSt_1 = null;
+    {        
         ResultSet RstSt_1 = null;
-        String qry = "INSERT INTO `guestTable`(`first_name`, `last_name`, `gsm`, `email`) VALUES (?,?,?,?)";
+        String qry = "INSERT INTO `guestTable`(`first_name`, `last_name`, `gsm`, `email`, `guest_rating`) VALUES (?,?,?,?,?)"; 
         
         try {
             PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qry);
@@ -30,6 +26,7 @@ public class GuestClass {
             PpdSt_1.setString(2, LN);
             PpdSt_1.setString(3, GSM);
             PpdSt_1.setString(4, Email);
+            PpdSt_1.setString(5, "0");
             
             return (PpdSt_1.executeUpdate() > 0);
             
@@ -39,13 +36,12 @@ public class GuestClass {
         }                
     }
     
-    
-    //метод за 'корекция' на гост
-    public boolean editingSelectedGuest(int id, String FN, String LN, String GSM, String Email)
+        
+    public boolean editingSelectedGuest(int id, String FN, String LN, String GSM, String Email, String Rating)
     {
-        // PreparedStatement PpdSt_1 = null;
+
         ResultSet RstSt_1 = null;
-        String qry_editingSelectedGuest = "UPDATE `guesttable` SET `first_name`=?,`last_name`=?,`gsm`=?,`email`=? WHERE `gID`=?";
+        String qry_editingSelectedGuest = "UPDATE `guesttable` SET `first_name`=?,`last_name`=?,`gsm`=?,`email`=?,`guest_rating`=? WHERE `gID`=?";
         
         try {
             PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qry_editingSelectedGuest);
@@ -54,7 +50,9 @@ public class GuestClass {
             PpdSt_1.setString(2, LN);
             PpdSt_1.setString(3, GSM);
             PpdSt_1.setString(4, Email);
-            PpdSt_1.setInt(5, id);
+            PpdSt_1.setString(5, Rating);
+            PpdSt_1.setInt(6, id);
+            
             
             return (PpdSt_1.executeUpdate() > 0);
             
@@ -64,10 +62,9 @@ public class GuestClass {
         }  
     }
     
-    //метод за 'премахване' на гост
     public boolean delGuest(int idOfGuest)
     {
-        // PreparedStatement PpdSt_1 = null;
+
         ResultSet RstSt_1 = null;
         String qryDELETE = "DELETE FROM `guesttable` WHERE `gID`=?";
         
@@ -85,7 +82,6 @@ public class GuestClass {
     }
     
     
-    //метод за 'връщане' на лист с гостите в таблицата
     public void addingItemsIntoTable(JTable myGuestTable)
     {                        
         String slctQry_1 = "SELECT * FROM `guestTable`";
@@ -96,12 +92,13 @@ public class GuestClass {
             Object[] line;
             while(ResSet_1.next() )
             {
-                line = new Object[5]; // gID, first_name, last_name, gsm, email 
+                line = new Object[6]; 
                 line[0] = ResSet_1.getInt(1);
                 line[1] = ResSet_1.getString(2);
                 line[2] = ResSet_1.getString(3);
                 line[3] = ResSet_1.getString(4);
                 line[4] = ResSet_1.getString(5);    
+                line[5] = ResSet_1.getString(6);
                 
                 DftTM1.addRow(line);
             }
@@ -109,4 +106,6 @@ public class GuestClass {
             Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
 }
