@@ -16,6 +16,8 @@ import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.DefaultTableModel;
 
+import java.util.Date;
+
 /**
  *
  * @author kom6i
@@ -196,10 +198,9 @@ jPanel1Layout.setHorizontalGroup(
         java.util.Date dateOut=new SimpleDateFormat("yyyy-MM-dd").parse(Date_Went);
         
         // - - - - -- - -
-        
-         String slctQry_1 = "SELECT * FROM `reservations` WHERE `date_came` BETWEEN CAST('%"+dateCame+"%' AS DATE) AND CAST('%"+Date_Went+"%' AS DATE)";
-        
-         
+     
+        String slctQry_1 = String.format("SELECT * FROM `reservations` WHERE `date_came`>='%s' AND `date_came`<='%s'",dateCame, Date_Went ); //!!!
+                  
         try {            
             PreparedStatement PrepaSt_1 = mysqlconn_obj1.devConnect().prepareStatement(slctQry_1);
             ResultSet ResSet_1 = PrepaSt_1.executeQuery();
