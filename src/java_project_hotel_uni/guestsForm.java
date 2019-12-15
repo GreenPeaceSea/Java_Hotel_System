@@ -343,14 +343,21 @@ public class guestsForm extends javax.swing.JFrame {
             showMessageDialog(null, "Please fill all of the text boxes! ", "Error", ERROR_MESSAGE);
             return; 
         }
-
-        if(gcObj1.AddingGuests(_FN, _LN, _GSM, _Email)) 
+        
+        //Проверява дали вече има гост със такъв ГСМ номер и ако да - извежда предупредителен месиджбокс
+        if(gcObj1.checkIfThereIsAnAnotherGSMNumberLikeThisOne(_GSM)==1)
         {
-            SuccessOrNot_label1.setText("Successfully Added");
-        }else
-        {
-            SuccessOrNot_label1.setText("Something Went Wrong");
+            showMessageDialog(null, "The guest already exists! ", "Error", ERROR_MESSAGE);
+        }else{
+            if(gcObj1.AddingGuests(_FN, _LN, _GSM, _Email)) 
+            {
+                SuccessOrNot_label1.setText("Successfully Added");
+            }else
+            {
+                SuccessOrNot_label1.setText("Something Went Wrong");
+            }
         }
+        
     }//GEN-LAST:event_btn1_guests_creationActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

@@ -13,6 +13,23 @@ import javax.swing.table.DefaultTableModel;
 public class GuestClass {
     my_SQL_Connect_Class mycon1 = new my_SQL_Connect_Class();
     
+    public int checkIfThereIsAnAnotherGSMNumberLikeThisOne(String phone)
+    {
+        String slctQry_1 = String.format("SELECT * FROM `guesttable` WHERE `gsm`='%s'",phone);
+        try {
+            PreparedStatement PrepaSt_1 = mycon1.devConnect().prepareStatement(slctQry_1);
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();
+                        
+            if(ResSet_1.next() )
+            {
+                return 1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    
     
     public boolean AddingGuests(String FN, String LN, String GSM, String Email)
     {        
