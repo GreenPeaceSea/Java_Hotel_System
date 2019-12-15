@@ -198,7 +198,7 @@ jPanel1Layout.setHorizontalGroup(
         java.util.Date dateOut=new SimpleDateFormat("yyyy-MM-dd").parse(Date_Went);
         
         // - - - - -- - -
-     
+        
         String slctQry_1 = String.format("SELECT * FROM `reservations` WHERE `date_came`>='%s' AND `date_came`<='%s'",dateCame, Date_Went ); //!!!
                   
         try {            
