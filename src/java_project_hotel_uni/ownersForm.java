@@ -225,6 +225,8 @@ public class ownersForm extends javax.swing.JFrame {
 
     private void info_receptionists_btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_info_receptionists_btn3ActionPerformed
         info_receptionists_DB_Form rF1 = new info_receptionists_DB_Form();
+            rF1.setHotelName(getHotelNameOfTheOwner(username_of_onwer));
+            rF1.activate_addingItemsIntoTable();
         rF1.setVisible(true);
         rF1.pack();
         rF1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
