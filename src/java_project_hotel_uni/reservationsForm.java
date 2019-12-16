@@ -108,7 +108,7 @@ public class reservationsForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went"
+                "Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went", "Cancelled Reserv."
             }
         )
 
@@ -453,6 +453,32 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                     showMessageDialog(null, "The date out should be after or equal to the day of arrival ", "ERROR", ERROR_MESSAGE);
                 }else
                 {
+                    String Type_of_Cancellation = type_of_cancellation_textBox1.getText();
+                   // showMessageDialog(null, Type_of_Cancellation.length(), "Successful", INFORMATION_MESSAGE);
+                    if(Type_of_Cancellation.length()==0)
+                    {
+                        if(reserv_class_obj1.editingSelectedReservation(reserID, guestID, rNumber, dateCame, Date_Went, ""))
+                            {
+                                showMessageDialog(null, "You have updated it successfully! ", "Successful", INFORMATION_MESSAGE);
+                            }
+                        else
+                            {
+                                showMessageDialog(null, "You have NOT updated it successfully! ", "ERROR", ERROR_MESSAGE);
+                            }
+                    }else //когато полето за прекъсната резервация е попълнено
+                    {
+                        if(reserv_class_obj1.editingSelectedReservation(reserID, guestID, rNumber, dateCame, Date_Went, Type_of_Cancellation))
+                            {
+                                showMessageDialog(null, "You have updated it successfully! ", "Successful", INFORMATION_MESSAGE);
+                            }
+                        else
+                            {
+                                showMessageDialog(null, "You have NOT updated it successfully! ", "ERROR", ERROR_MESSAGE);
+                            }
+                    }
+                    // -- - - - - - -- - 
+                    
+                    /*
                     if(reserv_class_obj1.editingSelectedReservation(reserID, guestID, rNumber, dateCame, Date_Went))
                       {
                         showMessageDialog(null, "You have updated it successfully! ", "Successful", INFORMATION_MESSAGE);
@@ -461,6 +487,7 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                         {
                         showMessageDialog(null, "You have NOT updated it successfully! ", "ERROR", ERROR_MESSAGE);
                         }
+                    */
                 }
 
         // -- - - - - - -- - - -- - - -- - 
@@ -500,7 +527,7 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
     
     // Refresh button
     private void btn1_guests_clear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_guests_clear1ActionPerformed
-       jTable1.setModel(new DefaultTableModel(null, new Object[]{"Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went"})); 
+       jTable1.setModel(new DefaultTableModel(null, new Object[]{"Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went", "Cancelled Reserv."})); 
         
        reserv_class_obj1.addingReservationsIntoTable(jTable1);
     }//GEN-LAST:event_btn1_guests_clear1ActionPerformed

@@ -26,7 +26,7 @@ public class Reservation_Class {
     public boolean AddingReservation(int guestID, int roomNum, String dateCame, String dateWent, String receptName)
     {         
         ResultSet RstSt_1 = null;
-        String qry = "INSERT INTO `reservations`(`guestID`, `rNumber`, `date_came`, `date_went`, `recept_that_made_reserv`) VALUES (?,?,?,?,?)";
+        String qry = "INSERT INTO `reservations`(`guestID`, `rNumber`, `date_came`, `date_went`, `recept_that_made_reserv`, `cancelled_reservation_reason`) VALUES (?,?,?,?,?,?)";
         
         try {
             PreparedStatement PpdSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(qry);
@@ -36,6 +36,7 @@ public class Reservation_Class {
             PpdSt_1.setString(3, dateCame);
             PpdSt_1.setString(4, dateWent);
             PpdSt_1.setString(5, receptName);
+            PpdSt_1.setString(6, "");
         //    PpdSt_1.setString(5, Cancel_Reserv);
             
             if(room.isRoomToReserved(roomNum).equals("Not Free"))
@@ -60,11 +61,11 @@ public class Reservation_Class {
         }                
     }
     
-    public boolean editingSelectedReservation(int reserID, int guestID, int roomNum, String dateCame, String dateWent) 
+    public boolean editingSelectedReservation(int reserID, int guestID, int roomNum, String dateCame, String dateWent, String cancellation_Type) 
     {
 
         ResultSet RstSt_1 = null;
-        String qry_editingSelectedGuest = "UPDATE `reservations` SET `guestID`=?,`rNumber`=?,`date_came`=?,`date_went`=? WHERE `id`=?";
+        String qry_editingSelectedGuest = "UPDATE `reservations` SET `guestID`=?,`rNumber`=?,`date_came`=?,`date_went`=?,`cancelled_reservation_reason`=? WHERE `id`=?";
         
         try {
             PreparedStatement PpdSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(qry_editingSelectedGuest);
@@ -73,7 +74,10 @@ public class Reservation_Class {
             PpdSt_1.setInt(2, roomNum);
             PpdSt_1.setString(3, dateCame);
             PpdSt_1.setString(4, dateWent);
-            PpdSt_1.setInt(5, reserID);
+            PpdSt_1.setString(5, cancellation_Type); //!!!
+            // PpdSt_1.setInt(5, reserID);
+            PpdSt_1.setInt(6, reserID); //!!!
+            
             
             
             return (PpdSt_1.executeUpdate() > 0);
@@ -114,7 +118,8 @@ public class Reservation_Class {
     
     public void addingReservationsIntoTable(JTable myGuestTable) 
     {                        
-        String slctQry_1 = "SELECT * FROM `reservations`";
+       // String slctQry_1 = "SELECT * FROM `reservations`";
+        String slctQry_1 = "SELECT `id`,`guestID`,`rNumber`,`date_came`,`date_came`,`cancelled_reservation_reason` FROM `reservations`";
         try {
             PreparedStatement PrepaSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(slctQry_1);
             ResultSet ResSet_1 = PrepaSt_1.executeQuery();
@@ -122,12 +127,13 @@ public class Reservation_Class {
             Object[] line;
             while(ResSet_1.next() )
             {
-                line = new Object[5]; 
+                line = new Object[6]; 
                 line[0] = ResSet_1.getInt(1);
                 line[1] = ResSet_1.getInt(2);
                 line[2] = ResSet_1.getInt(3);
                 line[3] = ResSet_1.getString(4);
                 line[4] = ResSet_1.getString(5);
+                line[5] = ResSet_1.getString(6);
                    
                 
                 DftTM1.addRow(line);
