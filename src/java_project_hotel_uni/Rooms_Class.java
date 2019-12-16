@@ -63,6 +63,38 @@ public class Rooms_Class {
         }
     }
     
+    public void adding_RESERVED_OR_FREE_RoomsIntoTable(JTable myGuestTable, String freeORreserved) 
+    {                        
+        
+        // - - - - - - - - - - - - 
+        // Изтриване на информацията в таблицата :
+        DefaultTableModel model = (DefaultTableModel) myGuestTable.getModel();
+        model.setRowCount(0);
+        // - - - - - - - - - - - - 
+        
+        String slctQry_1 = String.format("SELECT * FROM `rooms` WHERE `Rreserved`='%s'", freeORreserved);
+                
+        try {
+            PreparedStatement PrepaSt_1 = mycon1.devConnect().prepareStatement(slctQry_1);
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();
+            DefaultTableModel DftTM1 = (DefaultTableModel)myGuestTable.getModel();
+            Object[] line;
+            while(ResSet_1.next() )
+            {
+                line = new Object[4]; 
+                line[0] = ResSet_1.getInt(1);
+                line[1] = ResSet_1.getInt(2);
+                line[2] = ResSet_1.getString(3);
+                line[3] = ResSet_1.getString(4);
+                   
+                
+                DftTM1.addRow(line);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
     public void addingTypeOfRoomsIntoComboBox(JComboBox myComboBox) 
     {                        
         String slctQry_1 = "SELECT * FROM `roomtype`";
