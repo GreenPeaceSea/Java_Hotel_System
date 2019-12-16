@@ -23,10 +23,10 @@ public class Reservation_Class {
     my_SQL_Connect_Class mysqlconn_reservation_obj1 = new my_SQL_Connect_Class();
     Rooms_Class room = new Rooms_Class();
     
-    public boolean AddingReservation(int guestID, int roomNum, String dateCame, String dateWent)
+    public boolean AddingReservation(int guestID, int roomNum, String dateCame, String dateWent, String receptName)
     {         
         ResultSet RstSt_1 = null;
-        String qry = "INSERT INTO `reservations`(`guestID`, `rNumber`, `date_came`, `date_went`) VALUES (?,?,?,?)";
+        String qry = "INSERT INTO `reservations`(`guestID`, `rNumber`, `date_came`, `date_went`, `recept_that_made_reserv`) VALUES (?,?,?,?,?)";
         
         try {
             PreparedStatement PpdSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(qry);
@@ -35,6 +35,7 @@ public class Reservation_Class {
             PpdSt_1.setInt(2, roomNum);
             PpdSt_1.setString(3, dateCame);
             PpdSt_1.setString(4, dateWent);
+            PpdSt_1.setString(5, receptName);
         //    PpdSt_1.setString(5, Cancel_Reserv);
             
             if(room.isRoomToReserved(roomNum).equals("Not Free"))

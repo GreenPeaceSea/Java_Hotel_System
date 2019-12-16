@@ -29,6 +29,14 @@ public class reservationsForm extends javax.swing.JFrame {
         
         textBox1_Reservation_ID.setEditable(false); //Не позволява писане в полето
     }
+    
+    
+    String username_of_recept; 
+    public String setThings(String recept_username) 
+    {
+        username_of_recept = recept_username;
+        return username_of_recept;
+    }
 
 
     @SuppressWarnings("unchecked")
@@ -390,7 +398,7 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                     showMessageDialog(null, "The date out should be after or equal to the day of arrival ", "ERROR", ERROR_MESSAGE);
                 }else
                 {
-                    if(reserv_class_obj1.AddingReservation(Guest_ID, Room_Number, dateCame, Date_Went) == true)
+                    if(reserv_class_obj1.AddingReservation(Guest_ID, Room_Number, dateCame, Date_Went, username_of_recept) == true)
                       {
                         showMessageDialog(null, "You have added a reservation successfully! ", "Successful", INFORMATION_MESSAGE);
                       }

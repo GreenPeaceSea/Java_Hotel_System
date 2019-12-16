@@ -9,6 +9,13 @@ public class Insider extends javax.swing.JFrame {
         initComponents();
     }
     
+    String username_of_recept; 
+    public String setThings(String recept_username) 
+    {
+        username_of_recept = recept_username;
+        return username_of_recept;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -105,6 +112,7 @@ public class Insider extends javax.swing.JFrame {
     private void menuItem_ReservationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_ReservationsActionPerformed
         reservationsForm resF1 = new reservationsForm();
         resF1.setVisible(true);
+             resF1.setThings(username_of_recept);
         resF1.pack();
         resF1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_menuItem_ReservationsActionPerformed

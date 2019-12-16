@@ -17,6 +17,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.DefaultTableModel;
 
 import java.util.Date;
+import javax.swing.JTable;
 
 /**
  *
@@ -31,7 +32,36 @@ public class info_reservations_DB_Form extends javax.swing.JFrame {
     public info_reservations_DB_Form() {
         initComponents();
         
-        reserv_class_obj1.addingReservationsIntoTable(jTable1);
+        // reserv_class_obj1.addingReservationsIntoTable(jTable1);
+        addingReservationsIntoTable(jTable1);
+    }
+    
+    // - - - - - - - - - 
+    my_SQL_Connect_Class mysqlconn_reservation_obj1 = new my_SQL_Connect_Class();
+    
+    public void addingReservationsIntoTable(JTable myGuestTable) 
+    {                        
+        String slctQry_1 = "SELECT * FROM `reservations`";
+        try {
+            PreparedStatement PrepaSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(slctQry_1);
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();
+            DefaultTableModel DftTM1 = (DefaultTableModel)myGuestTable.getModel();
+            Object[] line;
+            while(ResSet_1.next() )
+            {
+                line = new Object[6]; 
+                line[0] = ResSet_1.getInt(1);
+                line[1] = ResSet_1.getInt(2);
+                line[2] = ResSet_1.getInt(3);
+                line[3] = ResSet_1.getString(4);
+                line[4] = ResSet_1.getString(5);
+                line[5] = ResSet_1.getString(6);   
+                
+                DftTM1.addRow(line);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     
@@ -56,7 +86,7 @@ public class info_reservations_DB_Form extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went"
+                "Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went", "Recept. That Made it"
             }
         )
 
@@ -127,7 +157,7 @@ jPanel1Layout.setHorizontalGroup(
     .addGroup(jPanel1Layout.createSequentialGroup()
         .addContainerGap()
         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -136,8 +166,9 @@ jPanel1Layout.setHorizontalGroup(
                         .addComponent(dateChooser_Date_Came, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(dateChooser_Date_Went, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(search_by_date_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(search_by_date_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)))
+        .addContainerGap())
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +192,9 @@ jPanel1Layout.setHorizontalGroup(
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGroup(layout.createSequentialGroup()
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,17 +237,18 @@ jPanel1Layout.setHorizontalGroup(
         try {            
             PreparedStatement PrepaSt_1 = mysqlconn_obj1.devConnect().prepareStatement(slctQry_1);
             ResultSet ResSet_1 = PrepaSt_1.executeQuery();
-            jTable1.setModel(new DefaultTableModel(null, new Object[]{"Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went"})); 
+            jTable1.setModel(new DefaultTableModel(null, new Object[]{"Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went", "Recept. That Made it"})); 
             DefaultTableModel DftTM1 = (DefaultTableModel)jTable1.getModel();           
             Object[] line;
             while(ResSet_1.next() )
             {
-                line = new Object[5]; 
+                line = new Object[6]; 
                 line[0] = ResSet_1.getInt(1);
                 line[1] = ResSet_1.getInt(2);
                 line[2] = ResSet_1.getInt(3);
                 line[3] = ResSet_1.getString(4);
                 line[4] = ResSet_1.getString(5);
+                line[5] = ResSet_1.getString(6);
                 
                 DftTM1.addRow(line);
             }           

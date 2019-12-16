@@ -305,6 +305,7 @@ public class Form_Login extends javax.swing.JFrame {
             if(ResS1.next() == true) //user: hoteltest и парола: testpass
             {                   
                 ins1.setVisible(true);
+                ins1.setThings(textBox1_user.getText());
                 ins1.pack();                
                 this.dispose();
                 
