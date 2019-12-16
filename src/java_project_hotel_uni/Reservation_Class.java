@@ -119,7 +119,7 @@ public class Reservation_Class {
     public void addingReservationsIntoTable(JTable myGuestTable) 
     {                        
        // String slctQry_1 = "SELECT * FROM `reservations`";
-        String slctQry_1 = "SELECT `id`,`guestID`,`rNumber`,`date_came`,`date_came`,`cancelled_reservation_reason` FROM `reservations`";
+        String slctQry_1 = "SELECT `id`,`guestID`,`rNumber`,`date_came`,`date_went`,`cancelled_reservation_reason` FROM `reservations`";
         try {
             PreparedStatement PrepaSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(slctQry_1);
             ResultSet ResSet_1 = PrepaSt_1.executeQuery();

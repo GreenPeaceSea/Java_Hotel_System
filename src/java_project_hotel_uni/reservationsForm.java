@@ -13,6 +13,8 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -66,6 +68,8 @@ public class reservationsForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         type_of_cancellation_textBox1 = new javax.swing.JTextField();
         most_recent_reservations_btn1 = new javax.swing.JButton();
+        show_all_reservations_btn2 = new javax.swing.JButton();
+        extra_services_btn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -232,6 +236,25 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
     }
     });
 
+    show_all_reservations_btn2.setBackground(new java.awt.Color(204, 0, 51));
+    show_all_reservations_btn2.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+    show_all_reservations_btn2.setText("Show All");
+    show_all_reservations_btn2.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            show_all_reservations_btn2ActionPerformed(evt);
+        }
+    });
+
+    extra_services_btn1.setBackground(new java.awt.Color(102, 0, 102));
+    extra_services_btn1.setFont(new java.awt.Font("Lucida Console", 0, 11)); // NOI18N
+    extra_services_btn1.setForeground(new java.awt.Color(255, 255, 255));
+    extra_services_btn1.setText("Extra Services");
+    extra_services_btn1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            extra_services_btn1ActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
@@ -254,40 +277,42 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dateChooser_Date_Came, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(7, 7, 7)
-                                        .addComponent(dateChooser_Date_Went, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(textBox1_Guest_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(textBox1_Room_Number, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(textBox1_Reservation_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addGap(0, 21, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addGap(18, 18, 18)
+                            .addComponent(dateChooser_Date_Came, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(textBox1_Guest_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textBox1_Room_Number, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textBox1_Reservation_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(15, 15, 15)
+                                    .addComponent(dateChooser_Date_Went, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGap(0, 14, Short.MAX_VALUE)))
             .addGap(18, 18, 18)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btn1_guests_clear1)
-                            .addGap(39, 39, 39)
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(type_of_cancellation_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(most_recent_reservations_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(btn1_guests_clear1)
+                    .addGap(39, 39, 39)
+                    .addComponent(jLabel1)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(type_of_cancellation_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(extra_services_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(most_recent_reservations_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(show_all_reservations_btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap())
     );
     jPanel1Layout.setVerticalGroup(
@@ -331,7 +356,9 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn1_guests_remove)
-                        .addComponent(most_recent_reservations_btn1))
+                        .addComponent(most_recent_reservations_btn1)
+                        .addComponent(show_all_reservations_btn2)
+                        .addComponent(extra_services_btn1))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(btn1_guests_clear))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -554,6 +581,15 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
     private void most_recent_reservations_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_most_recent_reservations_btn1ActionPerformed
         reserv_class_obj1.adding_RECENT_ReservationsIntoTable(jTable1);
     }//GEN-LAST:event_most_recent_reservations_btn1ActionPerformed
+
+    private void show_all_reservations_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_show_all_reservations_btn2ActionPerformed
+        refresh_table();
+    }//GEN-LAST:event_show_all_reservations_btn2ActionPerformed
+
+    private void extra_services_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extra_services_btn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_extra_services_btn1ActionPerformed
+  
     
     /**
      * @param args the command line arguments
@@ -599,6 +635,7 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
     private javax.swing.JButton btn1_reservation_edit;
     private datechooser.beans.DateChooserCombo dateChooser_Date_Came;
     private datechooser.beans.DateChooserCombo dateChooser_Date_Went;
+    private javax.swing.JButton extra_services_btn1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -610,6 +647,7 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton most_recent_reservations_btn1;
+    private javax.swing.JButton show_all_reservations_btn2;
     private javax.swing.JTextField textBox1_Guest_ID;
     private javax.swing.JTextField textBox1_Reservation_ID;
     private javax.swing.JTextField textBox1_Room_Number;
