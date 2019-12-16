@@ -401,6 +401,7 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                     if(reserv_class_obj1.AddingReservation(Guest_ID, Room_Number, dateCame, Date_Went, username_of_recept) == true)
                       {
                         showMessageDialog(null, "You have added a reservation successfully! ", "Successful", INFORMATION_MESSAGE);
+                        refresh_table();
                       }
                     else
                         {
@@ -460,6 +461,7 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                         if(reserv_class_obj1.editingSelectedReservation(reserID, guestID, rNumber, dateCame, Date_Went, ""))
                             {
                                 showMessageDialog(null, "You have updated it successfully! ", "Successful", INFORMATION_MESSAGE);
+                                refresh_table();
                             }
                         else
                             {
@@ -470,6 +472,7 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                         if(reserv_class_obj1.editingSelectedReservation(reserID, guestID, rNumber, dateCame, Date_Went, Type_of_Cancellation))
                             {
                                 showMessageDialog(null, "You have updated it successfully! ", "Successful", INFORMATION_MESSAGE);
+                                refresh_table();
                             }
                         else
                             {
@@ -508,12 +511,20 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
         if(reserv_class_obj1.delReservation(reservationId))
             {
                 showMessageDialog(null, "You have deleted it successfully! ", "Successful", INFORMATION_MESSAGE);
+                refresh_table();
             }else
             {
                 showMessageDialog(null, "You have NOT deleted it successfully! ", "Error", ERROR_MESSAGE);
             }
     }//GEN-LAST:event_btn1_guests_removeActionPerformed
 
+    // Refresh table method
+    private void refresh_table(){                                                   
+       jTable1.setModel(new DefaultTableModel(null, new Object[]{"Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went", "Cancelled Reserv."})); 
+        
+       reserv_class_obj1.addingReservationsIntoTable(jTable1);
+    } 
+    
     private void btn1_guests_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_guests_clearActionPerformed
         textBox1_Reservation_ID.setText("");
         textBox1_Guest_ID.setText("");

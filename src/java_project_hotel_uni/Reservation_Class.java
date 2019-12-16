@@ -154,7 +154,11 @@ public class Reservation_Class {
         model.setRowCount(0);
         // - - - - - - - - - - - - 
         
-        String slctQry_1 = String.format("SELECT * FROM `reservations` WHERE `date_went`>='%s'",todays_Date); 
+        String slctQry_1 = String.format("SELECT * FROM `reservations` WHERE `date_went`>='%s' AND `cancelled_reservation_reason`='%s'",todays_Date,""); 
+        /* по този начин НЕ се визуализират отменените резервации при натискане на бутон recentReservations (при 
+        всички без отменените резервации полето cancelled_reservation_reason в DB е празен стринг)*/
+        
+        
         try {
             PreparedStatement PrepaSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(slctQry_1);
             ResultSet ResSet_1 = PrepaSt_1.executeQuery();
