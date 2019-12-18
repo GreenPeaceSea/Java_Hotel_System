@@ -30,7 +30,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
         
         addingExtraServicesIntoTable(jTable1); 
         addingExtraServicesInto_ReservationGuest_Table(jTable2);
-        extra_services_id_textBox1.setEditable(false);
+       // extra_services_id_textBox1.setEditable(false);
     }
     
     String reservation_id;
@@ -106,7 +106,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         extra_services_id_textBox1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        delete_from_list_btn1 = new javax.swing.JButton();
+        delete_from_ReservationGuest_btn1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         total_service_price_textBox1 = new javax.swing.JTextField();
@@ -119,6 +119,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
         how_many_times_textBox1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         extra_service_id_textBox2 = new javax.swing.JTextField();
+        clear_all_btn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,7 +187,12 @@ public class extra_Services_Form extends javax.swing.JFrame {
     jLabel5.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
     jLabel5.setText("EXTRA SERVICES");
 
-    delete_from_list_btn1.setText("DELETE");
+    delete_from_ReservationGuest_btn1.setText("DELETE");
+    delete_from_ReservationGuest_btn1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            delete_from_ReservationGuest_btn1ActionPerformed(evt);
+        }
+    });
 
     jTable2.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
@@ -222,6 +228,13 @@ public class extra_Services_Form extends javax.swing.JFrame {
 
     jLabel10.setText("Extra Serv. ID :");
 
+    clear_all_btn1.setText("CLEAR ALL");
+    clear_all_btn1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            clear_all_btn1ActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
@@ -233,13 +246,14 @@ public class extra_Services_Form extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(delete_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(update_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(add_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(clear_all_btn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
+                    .addGap(18, 18, 18)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(delete_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                                .addComponent(update_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(add_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -257,9 +271,9 @@ public class extra_Services_Form extends javax.swing.JFrame {
                                             .addGap(18, 18, 18)
                                             .addComponent(extra_services_id_textBox1)))))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(delete_from_list_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(delete_from_ReservationGuest_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(441, 441, 441)
+                            .addGap(324, 324, 324)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
                                 .addComponent(confirm_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,9 +281,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(update_changes_jTable2_btn1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(update_changes_jTable2_btn1)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel6)
@@ -286,7 +298,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
                                         .addComponent(jLabel10))
                                     .addGap(18, 18, 18)
                                     .addComponent(extra_service_id_textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 18, Short.MAX_VALUE)))))
+                                    .addGap(0, 0, Short.MAX_VALUE)))))
                     .addGap(25, 25, 25))))
     );
     jPanel1Layout.setVerticalGroup(
@@ -294,7 +306,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
             .addContainerGap()
             .addComponent(jLabel5)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -306,14 +318,15 @@ public class extra_Services_Form extends javax.swing.JFrame {
                 .addComponent(add_update_delete_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(price_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(extra_services_id_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(delete_from_list_btn1))
+                .addComponent(delete_from_ReservationGuest_btn1))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addComponent(update_btn1)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(delete_btn1)
-                    .addGap(211, 211, 211))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(clear_all_btn1))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -341,8 +354,8 @@ public class extra_Services_Form extends javax.swing.JFrame {
                             .addComponent(extra_service_id_textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(update_changes_jTable2_btn1)
-                    .addContainerGap())))
+                    .addComponent(update_changes_jTable2_btn1)))
+            .addContainerGap())
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -454,7 +467,8 @@ public class extra_Services_Form extends javax.swing.JFrame {
     public boolean delExtraService(int extra_ser_id) 
     {        
         ResultSet RstSt_1 = null;
-        String qryDELETE = String.format("DELETE FROM `extra_services` WHERE `es_id`='%s'", extra_ser_id);
+        
+        String qryDELETE = "DELETE FROM `extra_services` WHERE `es_id`=?";
         
         try {
             PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qryDELETE);
@@ -537,6 +551,17 @@ public class extra_Services_Form extends javax.swing.JFrame {
             showMessageDialog(null, "You have NOT edited it successfully! ", "Error", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_update_changes_jTable2_btn1ActionPerformed
+
+    private void delete_from_ReservationGuest_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_from_ReservationGuest_btn1ActionPerformed
+        
+    }//GEN-LAST:event_delete_from_ReservationGuest_btn1ActionPerformed
+
+    private void clear_all_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear_all_btn1ActionPerformed
+        add_update_delete_textBox1.setText("");
+        price_textBox1.setText("");
+        extra_services_id_textBox1.setText("");
+        quantity_Spinner1.setValue(0);
+    }//GEN-LAST:event_clear_all_btn1ActionPerformed
 
     
     public boolean editingSelectedRow_ReservationGuest(int price, int xTimes, int totalAmount) 
@@ -631,9 +656,10 @@ public class extra_Services_Form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_btn1;
     private javax.swing.JTextField add_update_delete_textBox1;
+    private javax.swing.JButton clear_all_btn1;
     private javax.swing.JButton confirm_btn1;
     private javax.swing.JButton delete_btn1;
-    private javax.swing.JButton delete_from_list_btn1;
+    private javax.swing.JButton delete_from_ReservationGuest_btn1;
     private javax.swing.JTextField extra_service_id_textBox2;
     private javax.swing.JTextField extra_services_id_textBox1;
     private javax.swing.JTextField how_many_times_textBox1;

@@ -51,14 +51,15 @@
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="delete_btn1" max="32767" attributes="0"/>
+                              <Component id="update_btn1" max="32767" attributes="0"/>
+                              <Component id="add_btn1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="clear_all_btn1" alignment="1" pref="117" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="delete_btn1" pref="117" max="32767" attributes="0"/>
-                                      <Component id="update_btn1" max="32767" attributes="0"/>
-                                      <Component id="add_btn1" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
@@ -82,10 +83,10 @@
                                       </Group>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="delete_from_list_btn1" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <Component id="delete_from_ReservationGuest_btn1" min="-2" pref="113" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="441" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="confirm_btn1" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
@@ -94,10 +95,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="update_changes_jTable2_btn1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="update_changes_jTable2_btn1" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -117,7 +115,7 @@
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="extra_service_id_textBox2" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -133,7 +131,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
@@ -147,7 +145,7 @@
                       <Component id="add_update_delete_textBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="price_textBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="extra_services_id_textBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="delete_from_list_btn1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="delete_from_ReservationGuest_btn1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -155,7 +153,8 @@
                           <Component id="update_btn1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="delete_btn1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="clear_all_btn1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -191,9 +190,9 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="update_changes_jTable2_btn1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -292,10 +291,13 @@
             <Property name="text" type="java.lang.String" value="EXTRA SERVICES"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="delete_from_list_btn1">
+        <Component class="javax.swing.JButton" name="delete_from_ReservationGuest_btn1">
           <Properties>
             <Property name="text" type="java.lang.String" value="DELETE"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delete_from_ReservationGuest_btn1ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
           <AuxValues>
@@ -359,6 +361,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="extra_service_id_textBox2">
+        </Component>
+        <Component class="javax.swing.JButton" name="clear_all_btn1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CLEAR ALL"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clear_all_btn1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
