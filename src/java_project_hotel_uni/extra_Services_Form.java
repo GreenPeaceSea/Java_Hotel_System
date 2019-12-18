@@ -32,6 +32,14 @@ public class extra_Services_Form extends javax.swing.JFrame {
         extra_services_id_textBox1.setEditable(false);
     }
     
+    String reservation_id;
+    String id_guest;
+    public void setThings(String id_reserv, String guest_id)
+    {
+        reservation_id = id_reserv;
+        id_guest = guest_id;
+    }
+    
     public void addingExtraServicesIntoTable(JTable myGuestTable) 
     {                        
         String slctQry_1 = "SELECT * FROM `extra_services`";

@@ -590,11 +590,18 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
     }//GEN-LAST:event_show_all_reservations_btn2ActionPerformed
 
     private void extra_services_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extra_services_btn1ActionPerformed
-        extra_Services_Form resF1 = new extra_Services_Form();
-        resF1.setVisible(true);
-             // resF1.setThings(username_of_recept);
-        resF1.pack();
-        resF1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        if(textBox1_Reservation_ID.getText().equals("") || textBox1_Guest_ID.getText().equals(""))
+        {
+            showMessageDialog(null, "Please select a reservation! ", "Error", ERROR_MESSAGE);
+        }else
+        {
+            extra_Services_Form resF1 = new extra_Services_Form();
+            resF1.setVisible(true);
+                resF1.setThings(textBox1_Reservation_ID.getText(), textBox1_Guest_ID.getText());
+            resF1.pack();
+            resF1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
     }//GEN-LAST:event_extra_services_btn1ActionPerformed
   
     
