@@ -29,6 +29,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
         initComponents();
         
         addingExtraServicesIntoTable(jTable1); 
+        addingExtraServicesInto_ReservationGuest_Table(jTable2);
         extra_services_id_textBox1.setEditable(false);
     }
     
@@ -62,6 +63,28 @@ public class extra_Services_Form extends javax.swing.JFrame {
         }
     }
 
+    public void addingExtraServicesInto_ReservationGuest_Table(JTable myGuestTable) 
+    {                        
+        String slctQry_1 = "SELECT `extra_service_id`,`price`,`xtimes`,`total_amount` FROM `reserv_guest_extra_services`";
+        try {
+            PreparedStatement PrepaSt_1 = mycon1.devConnect().prepareStatement(slctQry_1);
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();
+            DefaultTableModel DftTM1 = (DefaultTableModel)myGuestTable.getModel();
+            Object[] line;
+            while(ResSet_1.next() )
+            {
+                line = new Object[4]; 
+                line[0] = ResSet_1.getInt(1);
+                line[1] = ResSet_1.getInt(2);
+                line[2] = ResSet_1.getInt(3);
+                line[3] = ResSet_1.getInt(4);
+                                   
+                DftTM1.addRow(line);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -92,6 +115,8 @@ public class extra_Services_Form extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         update_changes_jTable2_btn1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        how_many_times_textBox1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,6 +152,11 @@ public class extra_Services_Form extends javax.swing.JFrame {
         jLabel1.setText("Quantity :");
 
         confirm_btn1.setText("Confirm");
+        confirm_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirm_btn1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,7 +191,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
 
         },
         new String [] {
-            "ID", "x(Times)", "Price"
+            "Extra Serv. ID", "Price", "x(Times)", "Total Price"
         }
     )
 
@@ -180,6 +210,13 @@ public class extra_Services_Form extends javax.swing.JFrame {
     jLabel8.setText("Total Price :");
 
     update_changes_jTable2_btn1.setText("Update Changes");
+    update_changes_jTable2_btn1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            update_changes_jTable2_btn1ActionPerformed(evt);
+        }
+    });
+
+    jLabel9.setText("How many times:");
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -230,19 +267,18 @@ public class extra_Services_Form extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel6)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel8)
-                                                    .addGap(15, 15, 15)))
+                                                .addComponent(jLabel6)
+                                                .addComponent(jLabel9)
+                                                .addComponent(jLabel8))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(total_service_price_textBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                                                .addComponent(singe_service_price_textBox1))
+                                                .addComponent(total_service_price_textBox1)
+                                                .addComponent(singe_service_price_textBox1)
+                                                .addComponent(how_many_times_textBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
                                             .addGap(18, 18, 18)
                                             .addComponent(jLabel7))
                                         .addComponent(update_changes_jTable2_btn1))
-                                    .addGap(0, 95, Short.MAX_VALUE)))))
+                                    .addGap(0, 75, Short.MAX_VALUE)))))
                     .addGap(25, 25, 25))))
     );
     jPanel1Layout.setVerticalGroup(
@@ -285,13 +321,17 @@ public class extra_Services_Form extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addComponent(singe_service_price_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGap(2, 2, 2)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(how_many_times_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(total_service_price_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(update_changes_jTable2_btn1)
-                    .addGap(29, 29, 29))))
+                    .addContainerGap())))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -433,16 +473,84 @@ public class extra_Services_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        // TODO add your handling code here:
+        DefaultTableModel DfTblMl_1 = (DefaultTableModel)jTable2.getModel();
+
+        int selectedLine = jTable2.getSelectedRow();
+        
+        singe_service_price_textBox1.setText(DfTblMl_1.getValueAt(selectedLine, 1).toString());
+        how_many_times_textBox1.setText(DfTblMl_1.getValueAt(selectedLine, 2).toString());
+        total_service_price_textBox1.setText(DfTblMl_1.getValueAt(selectedLine, 3).toString());
     }//GEN-LAST:event_jTable2MouseClicked
 
-    // Refresh table method
+    
+    // Confirm quantity button
+    private void confirm_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_btn1ActionPerformed
+        if(add_update_delete_textBox1.getText().equals("") || price_textBox1.getText().equals("") || extra_services_id_textBox1.getText().equals(""))
+        {
+            showMessageDialog(null, "Please select a reservation! ", "Error", ERROR_MESSAGE);
+        }else if((Integer)quantity_Spinner1.getValue() <= 0){
+            showMessageDialog(null, "Please select a valid value! ", "Error", ERROR_MESSAGE);
+        }else
+        {
+            int reservationID = Integer.parseInt(reservation_id);
+            int guestID =  Integer.parseInt(id_guest);
+            int extra_service_id = Integer.parseInt(extra_services_id_textBox1.getText());
+            int singlePrice = Integer.parseInt(price_textBox1.getText());
+            int xTimes = (Integer)quantity_Spinner1.getValue();
+            int total_amount = xTimes*singlePrice;
+            
+            if(AddingExtraServicesInto_ReservationGuest_DB(reservationID, guestID, extra_service_id, singlePrice, xTimes, total_amount))
+            {
+                showMessageDialog(null, "You added it successfully! ", "Error", ERROR_MESSAGE);
+                refresh_table_ReservationGuest();
+            }else
+            {
+                showMessageDialog(null, "You didn't add it successfully! ", "Error", ERROR_MESSAGE);
+            }
+            // AddingExtraServicesInto_ReservationGuest_DB(reservationID, guestID, extra_service_id, singlePrice, xTimes, total_amount);            
+        }
+    }//GEN-LAST:event_confirm_btn1ActionPerformed
+
+    private void update_changes_jTable2_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_changes_jTable2_btn1ActionPerformed
+        
+    }//GEN-LAST:event_update_changes_jTable2_btn1ActionPerformed
+
+    public boolean AddingExtraServicesInto_ReservationGuest_DB(int id_reserv, int guestID, int extraServiceID, int single_price, int x_times, int totalAmount)
+    {
+        ResultSet RstSt_1 = null;
+        String qry = "INSERT INTO `reserv_guest_extra_services`(`id_reservation`, `guest_id`, `extra_service_id`, `price`, `xtimes`, `total_amount`) VALUES (?,?,?,?,?,?)";
+        
+        try {
+            PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qry);
+            
+            PpdSt_1.setInt(1, id_reserv);
+            PpdSt_1.setInt(2, guestID);
+            PpdSt_1.setInt(3, extraServiceID);
+            PpdSt_1.setInt(4, single_price);
+            PpdSt_1.setInt(5, x_times);
+            PpdSt_1.setInt(6, totalAmount);
+                        
+            return (PpdSt_1.executeUpdate()>0);            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }                
+    }
+    
+    // Refresh table method - jTable1
     private void refresh_table(){                                                   
        jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID", "Name", "Price"})); 
         
        addingExtraServicesIntoTable(jTable1);
     } 
     
+    // Refresh table method - jTable2
+    private void refresh_table_ReservationGuest(){                                                   
+       jTable2.setModel(new DefaultTableModel(null, new Object[]{"Extra Serv. ID", "Price", "x(Times)", "Total Price"})); 
+        
+       addingExtraServicesInto_ReservationGuest_Table(jTable2);
+    } 
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -483,6 +591,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
     private javax.swing.JButton delete_btn1;
     private javax.swing.JButton delete_from_list_btn1;
     private javax.swing.JTextField extra_services_id_textBox1;
+    private javax.swing.JTextField how_many_times_textBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -491,6 +600,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;

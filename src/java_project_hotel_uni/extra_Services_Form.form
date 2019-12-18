@@ -96,27 +96,24 @@
                                       <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="total_service_price_textBox1" pref="97" max="32767" attributes="0"/>
+                                                      <Component id="total_service_price_textBox1" max="32767" attributes="0"/>
                                                       <Component id="singe_service_price_textBox1" max="32767" attributes="0"/>
+                                                      <Component id="how_many_times_textBox1" alignment="0" pref="97" max="32767" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="update_changes_jTable2_btn1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="update_changes_jTable2_btn1" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="95" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="75" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -174,14 +171,19 @@
                               <Component id="singe_service_price_textBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="total_service_price_textBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="how_many_times_textBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="total_service_price_textBox1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="update_changes_jTable2_btn1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -229,6 +231,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirm"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirm_btn1ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -294,7 +299,7 @@
             <Component class="javax.swing.JTable" name="jTable2">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;ID&quot;, &quot;x(Times)&quot;, &quot;Price&quot;&#xa;    }&#xa;)&#xa;&#xa;" type="code"/>
+                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Extra Serv. ID&quot;, &quot;Price&quot;, &quot;x(Times)&quot;, &quot;Total Price&quot;&#xa;    }&#xa;)&#xa;&#xa;" type="code"/>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -329,6 +334,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Update Changes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="update_changes_jTable2_btn1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel9">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="How many times:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="how_many_times_textBox1">
         </Component>
       </SubComponents>
     </Container>
