@@ -117,6 +117,8 @@ public class extra_Services_Form extends javax.swing.JFrame {
         update_changes_jTable2_btn1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         how_many_times_textBox1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        extra_service_id_textBox2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -218,6 +220,8 @@ public class extra_Services_Form extends javax.swing.JFrame {
 
     jLabel9.setText("How many times:");
 
+    jLabel10.setText("Extra Serv. ID :");
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
@@ -229,33 +233,33 @@ public class extra_Services_Form extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(delete_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                        .addComponent(update_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(add_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(add_update_delete_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addGap(33, 33, 33)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(64, 64, 64)
-                                    .addComponent(jLabel4))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(price_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(extra_services_id_textBox1)))))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(delete_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                .addComponent(update_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(add_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(add_update_delete_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2))
+                                    .addGap(33, 33, 33)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel3)
+                                            .addGap(64, 64, 64)
+                                            .addComponent(jLabel4))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(price_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(extra_services_id_textBox1)))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(delete_from_list_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(441, 441, 441)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
                                 .addComponent(confirm_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,21 +268,25 @@ public class extra_Services_Form extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(update_changes_jTable2_btn1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel6)
-                                                .addComponent(jLabel9)
-                                                .addComponent(jLabel8))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(total_service_price_textBox1)
-                                                .addComponent(singe_service_price_textBox1)
-                                                .addComponent(how_many_times_textBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel7))
-                                        .addComponent(update_changes_jTable2_btn1))
-                                    .addGap(0, 75, Short.MAX_VALUE)))))
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel8))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(total_service_price_textBox1)
+                                        .addComponent(singe_service_price_textBox1)
+                                        .addComponent(how_many_times_textBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel10))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(extra_service_id_textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 18, Short.MAX_VALUE)))))
                     .addGap(25, 25, 25))))
     );
     jPanel1Layout.setVerticalGroup(
@@ -327,7 +335,10 @@ public class extra_Services_Form extends javax.swing.JFrame {
                         .addComponent(how_many_times_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(total_service_price_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(total_service_price_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(extra_service_id_textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(update_changes_jTable2_btn1)
@@ -477,6 +488,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
 
         int selectedLine = jTable2.getSelectedRow();
         
+        extra_service_id_textBox2.setText(DfTblMl_1.getValueAt(selectedLine, 0).toString());
         singe_service_price_textBox1.setText(DfTblMl_1.getValueAt(selectedLine, 1).toString());
         how_many_times_textBox1.setText(DfTblMl_1.getValueAt(selectedLine, 2).toString());
         total_service_price_textBox1.setText(DfTblMl_1.getValueAt(selectedLine, 3).toString());
@@ -512,9 +524,41 @@ public class extra_Services_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_confirm_btn1ActionPerformed
 
     private void update_changes_jTable2_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_changes_jTable2_btn1ActionPerformed
-        
+        int servicePrice = Integer.valueOf(singe_service_price_textBox1.getText());
+        int howManyTimes = Integer.valueOf(how_many_times_textBox1.getText());
+        int TotalPrice = Integer.valueOf(total_service_price_textBox1.getText());
+
+        if(editingSelectedRow_ReservationGuest(servicePrice, howManyTimes, TotalPrice))
+        {
+            showMessageDialog(null, "You have edited it successfully! ", "Successful", INFORMATION_MESSAGE);
+            refresh_table_ReservationGuest();
+        }else
+        {
+            showMessageDialog(null, "You have NOT edited it successfully! ", "Error", ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_update_changes_jTable2_btn1ActionPerformed
 
+    
+    public boolean editingSelectedRow_ReservationGuest(int price, int xTimes, int totalAmount) 
+    {
+        ResultSet RstSt_1 = null;
+        String qry_editingSelectedGuest = String.format("UPDATE `reserv_guest_extra_services` SET `price`=?,`xtimes`=?, `total_amount`=? WHERE `extra_service_id`='%d'", Integer.valueOf(extra_service_id_textBox2.getText()));
+        
+        try {
+            PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qry_editingSelectedGuest);
+            
+            PpdSt_1.setInt(1, price);            
+            PpdSt_1.setInt(2, xTimes);
+            PpdSt_1.setInt(3, totalAmount);
+            
+            return (PpdSt_1.executeUpdate() > 0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }  
+    }
+    
     public boolean AddingExtraServicesInto_ReservationGuest_DB(int id_reserv, int guestID, int extraServiceID, int single_price, int x_times, int totalAmount)
     {
         ResultSet RstSt_1 = null;
@@ -590,9 +634,11 @@ public class extra_Services_Form extends javax.swing.JFrame {
     private javax.swing.JButton confirm_btn1;
     private javax.swing.JButton delete_btn1;
     private javax.swing.JButton delete_from_list_btn1;
+    private javax.swing.JTextField extra_service_id_textBox2;
     private javax.swing.JTextField extra_services_id_textBox1;
     private javax.swing.JTextField how_many_times_textBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
