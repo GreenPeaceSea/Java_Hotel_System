@@ -14,6 +14,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -296,10 +297,9 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(15, 15, 15)
                                     .addComponent(dateChooser_Date_Went, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGap(0, 14, Short.MAX_VALUE)))
+                    .addGap(0, 17, Short.MAX_VALUE)))
             .addGap(18, 18, 18)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addComponent(btn1_guests_clear1)
                     .addGap(39, 39, 39)
@@ -312,7 +312,10 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(most_recent_reservations_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
-                    .addComponent(show_all_reservations_btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(show_all_reservations_btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap())
     );
     jPanel1Layout.setVerticalGroup(
@@ -587,7 +590,11 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
     }//GEN-LAST:event_show_all_reservations_btn2ActionPerformed
 
     private void extra_services_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extra_services_btn1ActionPerformed
-        // TODO add your handling code here:
+        extra_Services_Form resF1 = new extra_Services_Form();
+        resF1.setVisible(true);
+             // resF1.setThings(username_of_recept);
+        resF1.pack();
+        resF1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_extra_services_btn1ActionPerformed
   
     
