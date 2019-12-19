@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -29,7 +30,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
         initComponents();
         
         addingExtraServicesIntoTable(jTable1); 
-        addingExtraServicesInto_ReservationGuest_Table(jTable2);
+       // addingExtraServicesInto_ReservationGuest_Table(jTable2);
        // extra_services_id_textBox1.setEditable(false);
     }
     
@@ -39,6 +40,31 @@ public class extra_Services_Form extends javax.swing.JFrame {
     {
         reservation_id = id_reserv;
         id_guest = guest_id;
+    }
+    
+    public void checkingTheReservationIn_DB()
+    {
+        if(checkIfThereIsAlreadyAReservationInThe_DB(Integer.valueOf(reservation_id))==1)
+        {
+            addingExtraServicesInto_ReservationGuest_Table(jTable2);
+        }
+    }
+    
+    public int checkIfThereIsAlreadyAReservationInThe_DB(int reserv_ID)
+    {        
+        String slctQry_1 = String.format("SELECT * FROM `reserv_guest_extra_services` WHERE `id_reservation`='%d'",reserv_ID);
+        try {
+            PreparedStatement PrepaSt_1 = mycon1.devConnect().prepareStatement(slctQry_1);
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();
+                        
+            if(ResSet_1.next() )
+            {
+                return 1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
     
     public void addingExtraServicesIntoTable(JTable myGuestTable) 
@@ -65,7 +91,8 @@ public class extra_Services_Form extends javax.swing.JFrame {
 
     public void addingExtraServicesInto_ReservationGuest_Table(JTable myGuestTable) 
     {                        
-        String slctQry_1 = "SELECT `extra_service_id`,`price`,`xtimes`,`total_amount` FROM `reserv_guest_extra_services`";
+        // String slctQry_1 = "SELECT `extra_service_id`,`price`,`xtimes`,`total_amount` FROM `reserv_guest_extra_services`";
+        String slctQry_1 = String.format("SELECT `extra_service_id`,`price`,`xtimes`,`total_amount` FROM `reserv_guest_extra_services` WHERE `id_reservation`='%d'", Integer.valueOf(reservation_id));
         try {
             PreparedStatement PrepaSt_1 = mycon1.devConnect().prepareStatement(slctQry_1);
             ResultSet ResSet_1 = PrepaSt_1.executeQuery();
@@ -106,7 +133,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         extra_services_id_textBox1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        delete_from_ReservationGuest_btn1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         total_service_price_textBox1 = new javax.swing.JTextField();
@@ -187,13 +213,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
     jLabel5.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
     jLabel5.setText("EXTRA SERVICES");
 
-    delete_from_ReservationGuest_btn1.setText("DELETE");
-    delete_from_ReservationGuest_btn1.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            delete_from_ReservationGuest_btn1ActionPerformed(evt);
-        }
-    });
-
     jTable2.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
 
@@ -270,8 +289,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
                                             .addComponent(price_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addComponent(extra_services_id_textBox1)))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(delete_from_ReservationGuest_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(324, 324, 324)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,23 +299,25 @@ public class extra_Services_Form extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(update_changes_jTable2_btn1)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel9)
-                                        .addComponent(jLabel8))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(total_service_price_textBox1)
-                                        .addComponent(singe_service_price_textBox1)
-                                        .addComponent(how_many_times_textBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel10))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(extra_service_id_textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(update_changes_jTable2_btn1)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel6)
+                                                .addComponent(jLabel9)
+                                                .addComponent(jLabel8))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(total_service_price_textBox1)
+                                                .addComponent(singe_service_price_textBox1)
+                                                .addComponent(how_many_times_textBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel10))
+                                            .addGap(18, 18, 18)
+                                            .addComponent(extra_service_id_textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGap(0, 0, Short.MAX_VALUE)))))
                     .addGap(25, 25, 25))))
     );
@@ -317,8 +337,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
                 .addComponent(add_btn1)
                 .addComponent(add_update_delete_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(price_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(extra_services_id_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(delete_from_ReservationGuest_btn1))
+                .addComponent(extra_services_id_textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -527,7 +546,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
             
             if(AddingExtraServicesInto_ReservationGuest_DB(reservationID, guestID, extra_service_id, singlePrice, xTimes, total_amount))
             {
-                showMessageDialog(null, "You added it successfully! ", "Error", ERROR_MESSAGE);
+                showMessageDialog(null, "You added it successfully! ", "Success", JOptionPane.INFORMATION_MESSAGE);
                 refresh_table_ReservationGuest();
             }else
             {
@@ -551,11 +570,27 @@ public class extra_Services_Form extends javax.swing.JFrame {
             showMessageDialog(null, "You have NOT edited it successfully! ", "Error", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_update_changes_jTable2_btn1ActionPerformed
-
-    private void delete_from_ReservationGuest_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_from_ReservationGuest_btn1ActionPerformed
+/*
+    public boolean delExtraService_inCurrentReserv(int extra_ser_id) 
+    {        
+        ResultSet RstSt_1 = null;
         
-    }//GEN-LAST:event_delete_from_ReservationGuest_btn1ActionPerformed
-
+        String qryDELETE = "DELETE FROM `reserv_guest_extra_services` WHERE `es_id`=?";
+        
+        try {
+            PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qryDELETE);
+                        
+            PpdSt_1.setInt(1, extra_ser_id);
+            
+            return (PpdSt_1.executeUpdate() > 0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }  
+    }
+    */
+    
     private void clear_all_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear_all_btn1ActionPerformed
         add_update_delete_textBox1.setText("");
         price_textBox1.setText("");
@@ -659,7 +694,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
     private javax.swing.JButton clear_all_btn1;
     private javax.swing.JButton confirm_btn1;
     private javax.swing.JButton delete_btn1;
-    private javax.swing.JButton delete_from_ReservationGuest_btn1;
     private javax.swing.JTextField extra_service_id_textBox2;
     private javax.swing.JTextField extra_services_id_textBox1;
     private javax.swing.JTextField how_many_times_textBox1;

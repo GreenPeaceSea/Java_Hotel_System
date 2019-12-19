@@ -599,6 +599,7 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
             extra_Services_Form resF1 = new extra_Services_Form();
             resF1.setVisible(true);
                 resF1.setThings(textBox1_Reservation_ID.getText(), textBox1_Guest_ID.getText());
+                resF1.checkingTheReservationIn_DB();
             resF1.pack();
             resF1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
