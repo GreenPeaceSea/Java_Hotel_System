@@ -5,6 +5,9 @@
  */
 package java_project_hotel_uni;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -230,6 +233,28 @@ public class extra_Services_Form extends javax.swing.JFrame {
     });
     jScrollPane3.setViewportView(jTable2);
 
+    total_service_price_textBox1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            total_service_price_textBox1ActionPerformed(evt);
+        }
+    });
+    total_service_price_textBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            total_service_price_textBox1KeyPressed(evt);
+        }
+    });
+
+    singe_service_price_textBox1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            singe_service_price_textBox1ActionPerformed(evt);
+        }
+    });
+    singe_service_price_textBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            singe_service_price_textBox1KeyPressed(evt);
+        }
+    });
+
     jLabel6.setText("Service Price :");
 
     jLabel7.setText("(Incl. discount)");
@@ -244,6 +269,17 @@ public class extra_Services_Form extends javax.swing.JFrame {
     });
 
     jLabel9.setText("How many times:");
+
+    how_many_times_textBox1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            how_many_times_textBox1ActionPerformed(evt);
+        }
+    });
+    how_many_times_textBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            how_many_times_textBox1KeyPressed(evt);
+        }
+    });
 
     jLabel10.setText("Extra Serv. ID :");
 
@@ -598,6 +634,58 @@ public class extra_Services_Form extends javax.swing.JFrame {
         quantity_Spinner1.setValue(0);
     }//GEN-LAST:event_clear_all_btn1ActionPerformed
 
+    private void how_many_times_textBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_how_many_times_textBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_how_many_times_textBox1ActionPerformed
+
+    private void singe_service_price_textBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singe_service_price_textBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_singe_service_price_textBox1ActionPerformed
+
+    private void total_service_price_textBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_service_price_textBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_total_service_price_textBox1ActionPerformed
+
+    Robot rob;
+    public void restrictTextFieldsInput(java.awt.event.KeyEvent evt) //Позволява (в случая) числата само от 0-9, backspace и delete
+    {
+        try {
+            rob= new Robot();
+            char c = evt.getKeyChar();
+            if (!((c >= '0') && (c <= '9') ||
+                    (c == KeyEvent.VK_BACK_SPACE) ||
+                    (c == KeyEvent.VK_DELETE))) {
+                getToolkit().beep();                    
+                    rob.keyPress(KeyEvent.VK_BACK_SPACE);
+                    rob.keyRelease(KeyEvent.VK_BACK_SPACE);                   
+                evt.consume();
+            }} catch (AWTException ex) {
+            Logger.getLogger(extra_Services_Form.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void computeTotalSum()
+    {
+        if(how_many_times_textBox1.getText().equals("") || singe_service_price_textBox1.getText().equals("") || extra_service_id_textBox2.getText().equals(""))
+        {}else{
+            int totalAmount = Integer.valueOf(singe_service_price_textBox1.getText())*Integer.valueOf(how_many_times_textBox1.getText());
+            total_service_price_textBox1.setText(String.format("%d",totalAmount));
+        }
+    }
+    
+    private void singe_service_price_textBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_singe_service_price_textBox1KeyPressed
+        restrictTextFieldsInput(evt);                
+    }//GEN-LAST:event_singe_service_price_textBox1KeyPressed
+
+    private void how_many_times_textBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_how_many_times_textBox1KeyPressed
+        restrictTextFieldsInput(evt);      
+    }//GEN-LAST:event_how_many_times_textBox1KeyPressed
+
+    private void total_service_price_textBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_total_service_price_textBox1KeyPressed
+        restrictTextFieldsInput(evt);
+    }//GEN-LAST:event_total_service_price_textBox1KeyPressed
+
+    
     
     public boolean editingSelectedRow_ReservationGuest(int price, int xTimes, int totalAmount) 
     {
