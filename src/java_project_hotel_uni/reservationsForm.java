@@ -456,18 +456,40 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                     showMessageDialog(null, "The date out should be after or equal to the day of arrival ", "ERROR", ERROR_MESSAGE);
                 }else
                 {
-                    if(reserv_class_obj1.AddingReservation(Guest_ID, Room_Number, dateCame, Date_Went, username_of_recept) == true)
+                    if(checking_for_NEGATIVE_rating(Guest_ID)<0)
+                    {
+                        int dialogButton = JOptionPane.YES_NO_OPTION;
+                    int dialogResult = JOptionPane.showConfirmDialog(this, "LOW RATING GUEST! Do you still want to create a reservation?", "WARNING", dialogButton);
+                    if(dialogResult == 0) {
+                         if(reserv_class_obj1.AddingReservation(Guest_ID, Room_Number, dateCame, Date_Went, username_of_recept) == true)
                       {
                         showMessageDialog(null, "You have added a reservation successfully! ", "Successful", INFORMATION_MESSAGE);
                         refresh_table();
                         
-                        // - + - + - + - +
                         addingGuestRating_DB(Guest_ID, dateCame, Date_Went, Room_Number);
                       }
                     else
                         {
                         showMessageDialog(null, "You have NOT added a reservation successfully! ", "ERROR", ERROR_MESSAGE);
                         }
+                    } else {
+                         // this.dispose();
+                    } 
+                    }else
+                    {
+                        if(reserv_class_obj1.AddingReservation(Guest_ID, Room_Number, dateCame, Date_Went, username_of_recept) == true)
+                      {
+                        showMessageDialog(null, "You have added a reservation successfully! ", "Successful", INFORMATION_MESSAGE);
+                        refresh_table();
+                        
+                        addingGuestRating_DB(Guest_ID, dateCame, Date_Went, Room_Number);
+                      }
+                    else
+                        {
+                        showMessageDialog(null, "You have NOT added a reservation successfully! ", "ERROR", ERROR_MESSAGE);
+                        } 
+                    }
+                                                               
                 }
                 
             } catch (ParseException ex) {
@@ -481,6 +503,30 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
         
     }//GEN-LAST:event_btn1_reservation_creationActionPerformed
 
+    public int checking_for_NEGATIVE_rating(int Guest_ID)
+    {
+        String slctQry_1 = "SELECT `guest_rating` FROM `guesttable` WHERE `gID` = ?";
+        try {
+            PreparedStatement PrepaSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(slctQry_1);
+            
+            PrepaSt_1.setInt(1, Guest_ID);
+            
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();            
+            
+            if(ResSet_1.next())
+            {
+                return Integer.valueOf(ResSet_1.getString(1));
+            }else
+            {
+                return 0;
+            }
+            
+            } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+    
     public void addingGuestRating_DB(int Guest_ID, String dateCame, String Date_Went, int Room_Number)
     {
         int rType = getRoomType(Room_Number);
