@@ -2,6 +2,9 @@
 package java_project_hotel_uni;
 
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -13,6 +16,7 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
+import static java.util.concurrent.TimeUnit.DAYS;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,6 +28,8 @@ import javax.swing.JOptionPane;
 public class reservationsForm extends javax.swing.JFrame {
 
     Reservation_Class reserv_class_obj1 = new Reservation_Class();
+    my_SQL_Connect_Class mysqlconn_reservation_obj1 = new my_SQL_Connect_Class();
+    GuestClass gcObj1 = new GuestClass();
     
     public reservationsForm() {
         initComponents();
@@ -393,7 +399,29 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
 
         textBox1_Reservation_ID.setText(DfTblMl_1.getValueAt(selectedLine, 0).toString()); 
         textBox1_Guest_ID.setText(DfTblMl_1.getValueAt(selectedLine, 1).toString());        
-        textBox1_Room_Number.setText(DfTblMl_1.getValueAt(selectedLine, 2).toString());  
+        textBox1_Room_Number.setText(DfTblMl_1.getValueAt(selectedLine, 2).toString()); 
+        
+        String dateValue = DfTblMl_1.getValueAt(selectedLine, 3).toString();
+        String dateValue1 = DfTblMl_1.getValueAt(selectedLine, 4).toString();
+
+        
+        try {
+            java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
+            java.util.Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue1);
+            
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);            
+            dateChooser_Date_Came.setSelectedDate(cal);
+            
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(date1);   
+            dateChooser_Date_Went.setSelectedDate(cal1);
+            
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(reservationsForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
                         
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -432,6 +460,9 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                       {
                         showMessageDialog(null, "You have added a reservation successfully! ", "Successful", INFORMATION_MESSAGE);
                         refresh_table();
+                        
+                        // - + - + - + - +
+                        addingGuestRating_DB(Guest_ID, dateCame, Date_Went, Room_Number);
                       }
                     else
                         {
@@ -450,6 +481,90 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
         
     }//GEN-LAST:event_btn1_reservation_creationActionPerformed
 
+    public void addingGuestRating_DB(int Guest_ID, String dateCame, String Date_Went, int Room_Number)
+    {
+        int rType = getRoomType(Room_Number);
+        
+        int roomPrice = Integer.valueOf(getRoomPrice(rType));
+        
+        int num_of_days = numOfDaysInHotel(dateCame, Date_Went);
+        
+        int index = num_of_days*roomPrice/100;
+        gcObj1.guest_Rating_reservation(Guest_ID, index);
+    }
+    
+    public void substractingGuestRating_DB(int Guest_ID, String dateCame, String Date_Went, int Room_Number)
+    {
+        int rType = getRoomType(Room_Number);
+        
+        int roomPrice = Integer.valueOf(getRoomPrice(rType));
+        
+        int num_of_days = numOfDaysInHotel(dateCame, Date_Went);
+        
+        int index = (int) (num_of_days*roomPrice/100*(-1.5));
+        gcObj1.guest_Rating_reservation(Guest_ID, index);
+    }
+    
+    public int getRoomType(int Room_Number)
+    {
+        String slctQry_1 = "SELECT `Rtype` FROM `rooms` WHERE `Rnumber` = ?";
+        try {
+            PreparedStatement PrepaSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(slctQry_1);
+            
+            PrepaSt_1.setInt(1, Room_Number);
+            
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();            
+            
+            if(ResSet_1.next())
+            {
+                return ResSet_1.getInt(1);
+            }else
+            {
+                return 0;
+            }
+            
+            } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+    
+    public String getRoomPrice(int Room_Type)
+    {
+        String slctQry_1 = "SELECT `Rprice` FROM `roomtype` WHERE `Rid` = ?";
+        try {
+            PreparedStatement PrepaSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(slctQry_1);
+            
+            PrepaSt_1.setInt(1, Room_Type);
+            
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();            
+            
+            if(ResSet_1.next())
+            {
+                return ResSet_1.getString(1);
+            }else
+            {
+                return "";
+            }
+            
+            } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
+    }
+    
+    
+    //Броят на дните през които клиентът е бил в хотела
+    public int numOfDaysInHotel(String dateCame, String Date_Went)
+    {
+        LocalDate DateCame = LocalDate.parse(dateCame);
+        LocalDate DateWent = LocalDate.parse(Date_Went);
+                
+        long daysBetween = java.time.temporal.ChronoUnit.DAYS.between(DateCame, DateWent);
+        
+        return (int)daysBetween;
+    }
+    
     private void btn1_reservation_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_reservation_editActionPerformed
     
     try
@@ -503,24 +618,15 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                             {
                                 showMessageDialog(null, "You have updated it successfully! ", "Successful", INFORMATION_MESSAGE);
                                 refresh_table();
+                                
+                                substractingGuestRating_DB(guestID, dateCame, Date_Went, rNumber);
                             }
                         else
                             {
                                 showMessageDialog(null, "You have NOT updated it successfully! ", "ERROR", ERROR_MESSAGE);
                             }
                     }
-                    // -- - - - - - -- - 
                     
-                    /*
-                    if(reserv_class_obj1.editingSelectedReservation(reserID, guestID, rNumber, dateCame, Date_Went))
-                      {
-                        showMessageDialog(null, "You have updated it successfully! ", "Successful", INFORMATION_MESSAGE);
-                      }
-                    else
-                        {
-                        showMessageDialog(null, "You have NOT updated it successfully! ", "ERROR", ERROR_MESSAGE);
-                        }
-                    */
                 }
 
         // -- - - - - - -- - - -- - - -- - 

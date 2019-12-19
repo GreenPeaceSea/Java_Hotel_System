@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 public class extra_Services_Form extends javax.swing.JFrame {
           
     my_SQL_Connect_Class mycon1 = new my_SQL_Connect_Class();
+    GuestClass gcObj1 = new GuestClass();
     
     public extra_Services_Form() {
         initComponents();
@@ -253,6 +254,9 @@ public class extra_Services_Form extends javax.swing.JFrame {
         public void keyPressed(java.awt.event.KeyEvent evt) {
             singe_service_price_textBox1KeyPressed(evt);
         }
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            singe_service_price_textBox1KeyReleased(evt);
+        }
     });
 
     jLabel6.setText("Service Price :");
@@ -278,6 +282,9 @@ public class extra_Services_Form extends javax.swing.JFrame {
     how_many_times_textBox1.addKeyListener(new java.awt.event.KeyAdapter() {
         public void keyPressed(java.awt.event.KeyEvent evt) {
             how_many_times_textBox1KeyPressed(evt);
+        }
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            how_many_times_textBox1KeyReleased(evt);
         }
     });
 
@@ -584,6 +591,9 @@ public class extra_Services_Form extends javax.swing.JFrame {
             {
                 showMessageDialog(null, "You added it successfully! ", "Success", JOptionPane.INFORMATION_MESSAGE);
                 refresh_table_ReservationGuest();
+                
+                addRatingToTheGuest();
+                                
             }else
             {
                 showMessageDialog(null, "You didn't add it successfully! ", "Error", ERROR_MESSAGE);
@@ -601,12 +611,22 @@ public class extra_Services_Form extends javax.swing.JFrame {
         {
             showMessageDialog(null, "You have edited it successfully! ", "Successful", INFORMATION_MESSAGE);
             refresh_table_ReservationGuest();
+            
+          //  int index = Integer.valueOf(total_service_price_textBox1.getText())/100;
+          //  gcObj1.guest_Rating_extra_services(Integer.valueOf(id_guest), index);
         }else
         {
             showMessageDialog(null, "You have NOT edited it successfully! ", "Error", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_update_changes_jTable2_btn1ActionPerformed
-/*
+
+    public void addRatingToTheGuest()
+    {
+        int index = Integer.valueOf(price_textBox1.getText())*(Integer)quantity_Spinner1.getValue()/100;
+        gcObj1.guest_Rating_extra_services(Integer.valueOf(id_guest), index);
+    }
+    
+    /*
     public boolean delExtraService_inCurrentReserv(int extra_ser_id) 
     {        
         ResultSet RstSt_1 = null;
@@ -684,6 +704,14 @@ public class extra_Services_Form extends javax.swing.JFrame {
     private void total_service_price_textBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_total_service_price_textBox1KeyPressed
         restrictTextFieldsInput(evt);
     }//GEN-LAST:event_total_service_price_textBox1KeyPressed
+
+    private void singe_service_price_textBox1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_singe_service_price_textBox1KeyReleased
+        computeTotalSum();
+    }//GEN-LAST:event_singe_service_price_textBox1KeyReleased
+
+    private void how_many_times_textBox1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_how_many_times_textBox1KeyReleased
+        computeTotalSum();
+    }//GEN-LAST:event_how_many_times_textBox1KeyReleased
 
     
     

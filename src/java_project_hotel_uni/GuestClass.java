@@ -124,5 +124,56 @@ public class GuestClass {
         }
     }
     
+    public void guest_Rating_reservation(int gID, int reservation_index)
+    {
+        guest_Rating_extra_services(gID, reservation_index);
+    }
     
+    public void guest_Rating_extra_services(int gID, int extra_services_index)
+    {
+        int guestRating = get_guest_rating_from_DB(gID); 
+        
+        guestRating = guestRating + extra_services_index;
+        
+        add_guest_Rating_in_DB(gID, guestRating);
+    }
+    
+    public int get_guest_rating_from_DB(int gID)
+    {
+        String slctQry_1 = String.format("SELECT `guest_rating` FROM `guesttable` WHERE `gID`='%d'",gID);
+        try {
+            PreparedStatement PrepaSt_1 = mycon1.devConnect().prepareStatement(slctQry_1);
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();
+                        
+            if(ResSet_1.next() )
+            {
+                // return 1;
+                return Integer.valueOf(ResSet_1.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    
+    public boolean add_guest_Rating_in_DB(int gID, int rating)
+    {
+        ResultSet RstSt_1 = null;
+        String qry_editingSelectedGuest = "UPDATE `guesttable` SET `guest_rating`=? WHERE `gID`=?";
+        
+        try {
+            PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qry_editingSelectedGuest);
+            
+            
+            PpdSt_1.setString(1, String.valueOf(rating));
+            PpdSt_1.setInt(2, gID);
+                        
+            return (PpdSt_1.executeUpdate() > 0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+        
 }

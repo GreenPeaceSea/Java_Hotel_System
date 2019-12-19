@@ -190,8 +190,7 @@ public class Reservation_Class {
             
             PrepaSt_1.setInt(1, reservationID);
             
-            ResultSet ResSet_1 = PrepaSt_1.executeQuery();
-            Object[] line;
+            ResultSet ResSet_1 = PrepaSt_1.executeQuery();            
             
             if(ResSet_1.next())
             {
