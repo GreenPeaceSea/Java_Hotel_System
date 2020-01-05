@@ -89,6 +89,11 @@ public class guestsForm extends javax.swing.JFrame {
         jLabel6.setText("E-Mail :");
 
         textBox1_Guest_First_Name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        textBox1_Guest_First_Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBox1_Guest_First_NameActionPerformed(evt);
+            }
+        });
 
         textBox1_Guest_ID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -438,15 +443,23 @@ public class guestsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_textBox1_Guest_RatingActionPerformed
 
     private void textBox1_Guest_GSMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textBox1_Guest_GSMKeyPressed
-        restrictTextFieldsInput(evt);
+        int length = textBox1_Guest_GSM.getText().length();
+        
+        restrict_GSM_TextFieldInput(evt, length);
     }//GEN-LAST:event_textBox1_Guest_GSMKeyPressed
 
+    private void textBox1_Guest_First_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBox1_Guest_First_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBox1_Guest_First_NameActionPerformed
+
     Robot rob;
-    public void restrictTextFieldsInput(java.awt.event.KeyEvent evt) //Позволява (в случая) числата само от 0-9, backspace, delete, shift (за използване на '+') и '+'
+    public void restrict_GSM_TextFieldInput(java.awt.event.KeyEvent evt, int length_of_field) //Позволява (в случая) числата само от 0-9, backspace, delete, shift (за използване на '+') и '+'
     {
         try {
             rob= new Robot();
             char c = evt.getKeyChar();
+            
+            if(length_of_field==0){ //единствено тук може да се използва '+' знака (т.е. като първи символ)
             if (!((c >= '0') && (c <= '9') || (c=='+') || 
                     (c == KeyEvent.VK_SHIFT)||
                     (c == KeyEvent.VK_BACK_SPACE) ||
@@ -455,6 +468,17 @@ public class guestsForm extends javax.swing.JFrame {
                     rob.keyPress(KeyEvent.VK_BACK_SPACE);
                     rob.keyRelease(KeyEvent.VK_BACK_SPACE);                   
                 evt.consume();
+            }}else
+            {
+               if (!((c >= '0') && (c <= '9') || 
+                    (c == KeyEvent.VK_BACK_SPACE) ||
+                    (c == KeyEvent.VK_DELETE))) {
+                getToolkit().beep();                    
+                    rob.keyPress(KeyEvent.VK_BACK_SPACE);
+                    rob.keyRelease(KeyEvent.VK_BACK_SPACE);                   
+                evt.consume();
+            }
+            
             }} catch (AWTException ex) {
             Logger.getLogger(extra_Services_Form.class.getName()).log(Level.SEVERE, null, ex);
         }
