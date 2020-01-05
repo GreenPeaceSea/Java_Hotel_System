@@ -5,6 +5,11 @@
  */
 package java_project_hotel_uni;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -90,6 +95,11 @@ public class guestsForm extends javax.swing.JFrame {
         textBox1_Guest_Last_Name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         textBox1_Guest_GSM.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        textBox1_Guest_GSM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textBox1_Guest_GSMKeyPressed(evt);
+            }
+        });
 
         textBox1_Guest_EMail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -427,6 +437,28 @@ public class guestsForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textBox1_Guest_RatingActionPerformed
 
+    private void textBox1_Guest_GSMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textBox1_Guest_GSMKeyPressed
+        restrictTextFieldsInput(evt);
+    }//GEN-LAST:event_textBox1_Guest_GSMKeyPressed
+
+    Robot rob;
+    public void restrictTextFieldsInput(java.awt.event.KeyEvent evt) //Позволява (в случая) числата само от 0-9, backspace, delete, shift (за използване на '+') и '+'
+    {
+        try {
+            rob= new Robot();
+            char c = evt.getKeyChar();
+            if (!((c >= '0') && (c <= '9') || (c=='+') || 
+                    (c == KeyEvent.VK_SHIFT)||
+                    (c == KeyEvent.VK_BACK_SPACE) ||
+                    (c == KeyEvent.VK_DELETE))) {
+                getToolkit().beep();                    
+                    rob.keyPress(KeyEvent.VK_BACK_SPACE);
+                    rob.keyRelease(KeyEvent.VK_BACK_SPACE);                   
+                evt.consume();
+            }} catch (AWTException ex) {
+            Logger.getLogger(extra_Services_Form.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
     /**

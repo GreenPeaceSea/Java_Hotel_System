@@ -363,6 +363,8 @@ public class roomsForm extends javax.swing.JFrame {
             if(rooms_class_object_1.AddingRooms(rNumber, rType, rGSM) == true)
             {
                 showMessageDialog(null, "You have added a room successfully! ", "Successful", INFORMATION_MESSAGE);
+                
+                refresh_Table();
             }else
             {
                 showMessageDialog(null, "You have NOT added a room successfully! ", "ERROR", ERROR_MESSAGE);
@@ -396,6 +398,8 @@ public class roomsForm extends javax.swing.JFrame {
             if(rooms_class_object_1.editingSelectedRoom(rNumber, type, _GSM, _isFree))
             {
                 showMessageDialog(null, "You have edited it successfully! ", "Successful", INFORMATION_MESSAGE);
+                
+                refresh_Table();
             }else
             {
                 showMessageDialog(null, "You have NOT edited it successfully! ", "Error", ERROR_MESSAGE);
@@ -408,6 +412,8 @@ public class roomsForm extends javax.swing.JFrame {
         if(rooms_class_object_1.delRoom(number_of_room))
             {
                 showMessageDialog(null, "You have deleted it successfully! ", "Successful", INFORMATION_MESSAGE);
+                
+                refresh_Table();
             }else
             {
                 showMessageDialog(null, "You have NOT deleted it successfully! ", "Error", ERROR_MESSAGE);
@@ -428,6 +434,13 @@ public class roomsForm extends javax.swing.JFrame {
         rooms_class_object_1.addingRoomsIntoTable(jTable1);
     }//GEN-LAST:event_btn1_guests_clear1ActionPerformed
 
+    private void refresh_Table()
+    {
+       jTable1.setModel(new DefaultTableModel(null, new Object[]{"Number", "Type", "GSM", "Free?"})); 
+        
+       rooms_class_object_1.addingRoomsIntoTable(jTable1);
+    }
+    
     private void btn1_Show_Type_Of_RoomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_Show_Type_Of_RoomsActionPerformed
             Rooms_Type_Form rooms_type_form_obj_1 = new Rooms_Type_Form();
             rooms_type_form_obj_1.setVisible(true);
