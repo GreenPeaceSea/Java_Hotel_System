@@ -5,7 +5,6 @@
  */
 package java_project_hotel_uni;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,8 +14,6 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import java.text.SimpleDateFormat; //!!!
 
 public class Reservation_Class {
     
@@ -64,7 +61,6 @@ public class Reservation_Class {
     public boolean editingSelectedReservation(int reserID, int guestID, int roomNum, String dateCame, String dateWent, String cancellation_Type) 
     {
 
-        ResultSet RstSt_1 = null;
         String qry_editingSelectedGuest = "UPDATE `reservations` SET `guestID`=?,`rNumber`=?,`date_came`=?,`date_went`=?,`cancelled_reservation_reason`=? WHERE `id`=?";
         
         try {
@@ -74,9 +70,8 @@ public class Reservation_Class {
             PpdSt_1.setInt(2, roomNum);
             PpdSt_1.setString(3, dateCame);
             PpdSt_1.setString(4, dateWent);
-            PpdSt_1.setString(5, cancellation_Type); //!!!
-            // PpdSt_1.setInt(5, reserID);
-            PpdSt_1.setInt(6, reserID); //!!!
+            PpdSt_1.setString(5, cancellation_Type); 
+            PpdSt_1.setInt(6, reserID); 
             
             
             
@@ -91,7 +86,6 @@ public class Reservation_Class {
     public boolean delReservation(int reserID) 
     {
 
-        ResultSet RstSt_1 = null;
         String qryDELETE = "DELETE FROM `reservations` WHERE `id`=?";
         
         try {
@@ -118,7 +112,6 @@ public class Reservation_Class {
     
     public void addingReservationsIntoTable(JTable myGuestTable) 
     {                        
-       // String slctQry_1 = "SELECT * FROM `reservations`";
         String slctQry_1 = "SELECT `id`,`guestID`,`rNumber`,`date_came`,`date_went`,`cancelled_reservation_reason` FROM `reservations`";
         try {
             PreparedStatement PrepaSt_1 = mysqlconn_reservation_obj1.devConnect().prepareStatement(slctQry_1);
@@ -145,7 +138,7 @@ public class Reservation_Class {
     
     public void adding_RECENT_ReservationsIntoTable(JTable myGuestTable) 
     {                        
-        // String slctQry_1 = "SELECT * FROM `reservations`";
+
         String todays_Date = java.time.LocalDate.now().toString(); //Формат : yyyy-MM-dd
         
         // - - - - - - - - - - - - 

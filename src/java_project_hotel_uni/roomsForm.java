@@ -1,7 +1,6 @@
 
 package java_project_hotel_uni;
 
-import java.awt.Color;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;

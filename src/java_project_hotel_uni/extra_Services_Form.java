@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -34,8 +33,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
         initComponents();
         
         addingExtraServicesIntoTable(jTable1); 
-       // addingExtraServicesInto_ReservationGuest_Table(jTable2);
-       // extra_services_id_textBox1.setEditable(false);
     }
     
     String reservation_id;
@@ -94,8 +91,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
     }
 
     public void addingExtraServicesInto_ReservationGuest_Table(JTable myGuestTable) 
-    {                        
-        // String slctQry_1 = "SELECT `extra_service_id`,`price`,`xtimes`,`total_amount` FROM `reserv_guest_extra_services`";
+    {                                
         String slctQry_1 = String.format("SELECT `extra_service_id`,`price`,`xtimes`,`total_amount` FROM `reserv_guest_extra_services` WHERE `id_reservation`='%d'", Integer.valueOf(reservation_id));
         try {
             PreparedStatement PrepaSt_1 = mycon1.devConnect().prepareStatement(slctQry_1);
@@ -458,7 +454,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
 
     public boolean AddingExtraServices(String name_Service, int price_Service)
     {
-        ResultSet RstSt_1 = null;
         String qry = "INSERT INTO `extra_services`(`es_name`, `es_price`) VALUES (?,?)";
         
         try {
@@ -496,7 +491,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
     public boolean editingSelectedExtraService(String name_Service, int price_Service) 
     {
 
-        ResultSet RstSt_1 = null;
         String qry_editingSelectedGuest = String.format("UPDATE `extra_services` SET `es_name`=?,`es_price`=? WHERE `es_id`='%s'", extra_services_id_textBox1.getText());
         
         try {
@@ -528,7 +522,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
 
     public boolean delExtraService(int extra_ser_id) 
     {        
-        ResultSet RstSt_1 = null;
         
         String qryDELETE = "DELETE FROM `extra_services` WHERE `es_id`=?";
         
@@ -554,8 +547,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
         extra_services_id_textBox1.setText(DfTblMl_1.getValueAt(selectedLine, 0).toString());
         add_update_delete_textBox1.setText(DfTblMl_1.getValueAt(selectedLine, 1).toString());
         price_textBox1.setText(DfTblMl_1.getValueAt(selectedLine, 2).toString());
-
-        // String isRes = DfTblMl_1.getValueAt(selectedLine, 3).toString();
         
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -597,8 +588,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
             }else
             {
                 showMessageDialog(null, "You didn't add it successfully! ", "Error", ERROR_MESSAGE);
-            }
-            // AddingExtraServicesInto_ReservationGuest_DB(reservationID, guestID, extra_service_id, singlePrice, xTimes, total_amount);            
+            }            
         }
     }//GEN-LAST:event_confirm_btn1ActionPerformed
 
@@ -625,28 +615,7 @@ public class extra_Services_Form extends javax.swing.JFrame {
         int index = Integer.valueOf(price_textBox1.getText())*(Integer)quantity_Spinner1.getValue()/100;
         gcObj1.guest_Rating_extra_services(Integer.valueOf(id_guest), index);
     }
-    
-    /*
-    public boolean delExtraService_inCurrentReserv(int extra_ser_id) 
-    {        
-        ResultSet RstSt_1 = null;
-        
-        String qryDELETE = "DELETE FROM `reserv_guest_extra_services` WHERE `es_id`=?";
-        
-        try {
-            PreparedStatement PpdSt_1 = mycon1.devConnect().prepareStatement(qryDELETE);
-                        
-            PpdSt_1.setInt(1, extra_ser_id);
             
-            return (PpdSt_1.executeUpdate() > 0);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(GuestClass.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }  
-    }
-    */
-    
     private void clear_all_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear_all_btn1ActionPerformed
         add_update_delete_textBox1.setText("");
         price_textBox1.setText("");
@@ -717,7 +686,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
     
     public boolean editingSelectedRow_ReservationGuest(int price, int xTimes, int totalAmount) 
     {
-        ResultSet RstSt_1 = null;
         String qry_editingSelectedGuest = String.format("UPDATE `reserv_guest_extra_services` SET `price`=?,`xtimes`=?, `total_amount`=? WHERE `extra_service_id`='%d'", Integer.valueOf(extra_service_id_textBox2.getText()));
         
         try {
@@ -737,7 +705,6 @@ public class extra_Services_Form extends javax.swing.JFrame {
     
     public boolean AddingExtraServicesInto_ReservationGuest_DB(int id_reserv, int guestID, int extraServiceID, int single_price, int x_times, int totalAmount)
     {
-        ResultSet RstSt_1 = null;
         String qry = "INSERT INTO `reserv_guest_extra_services`(`id_reservation`, `guest_id`, `extra_service_id`, `price`, `xtimes`, `total_amount`) VALUES (?,?,?,?,?,?)";
         
         try {

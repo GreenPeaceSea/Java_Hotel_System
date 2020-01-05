@@ -33,7 +33,6 @@ public class GuestClass {
     
     public boolean AddingGuests(String FN, String LN, String GSM, String Email)
     {        
-        ResultSet RstSt_1 = null;
         String qry = "INSERT INTO `guestTable`(`first_name`, `last_name`, `gsm`, `email`, `guest_rating`) VALUES (?,?,?,?,?)"; 
         
         try {
@@ -57,7 +56,6 @@ public class GuestClass {
     public boolean editingSelectedGuest(int id, String FN, String LN, String GSM, String Email, String Rating)
     {
 
-        ResultSet RstSt_1 = null;
         String qry_editingSelectedGuest = "UPDATE `guesttable` SET `first_name`=?,`last_name`=?,`gsm`=?,`email`=?,`guest_rating`=? WHERE `gID`=?";
         
         try {
@@ -82,7 +80,6 @@ public class GuestClass {
     public boolean delGuest(int idOfGuest)
     {
 
-        ResultSet RstSt_1 = null;
         String qryDELETE = "DELETE FROM `guesttable` WHERE `gID`=?";
         
         try {
@@ -147,7 +144,6 @@ public class GuestClass {
                         
             if(ResSet_1.next() )
             {
-                // return 1;
                 return Integer.valueOf(ResSet_1.getString(1));
             }
         } catch (SQLException ex) {
@@ -158,7 +154,6 @@ public class GuestClass {
     
     public boolean add_guest_Rating_in_DB(int gID, int rating)
     {
-        ResultSet RstSt_1 = null;
         String qry_editingSelectedGuest = "UPDATE `guesttable` SET `guest_rating`=? WHERE `gID`=?";
         
         try {

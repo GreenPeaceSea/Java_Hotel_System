@@ -206,8 +206,7 @@ public class Form_Login extends javax.swing.JFrame {
         
         my_SQL_Connect_Class obj1 = new my_SQL_Connect_Class();
         
-        // fjdfuyjdhfdhfjhd
-        if(admin_RadioButton.isSelected()) //!!!
+        if(admin_RadioButton.isSelected()) 
         {
             String slcQry = "SELECT * FROM `admin` WHERE `admin_username`=? AND `admin_password`=?";
         
@@ -300,7 +299,7 @@ public class Form_Login extends javax.swing.JFrame {
             PreS1.setString(2, uPass);
             ResS1 = PreS1.executeQuery();            
             
-            Insider ins1 = new Insider(); 
+            Receptionist_Form ins1 = new Receptionist_Form(); 
 
             if(ResS1.next() == true) //user: hoteltest и парола: testpass
             {                   

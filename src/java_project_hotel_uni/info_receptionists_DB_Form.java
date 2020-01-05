@@ -20,9 +20,6 @@ public class info_receptionists_DB_Form extends javax.swing.JFrame {
     
     public info_receptionists_DB_Form() {
         initComponents();
-        
-        // gcObj1.addingItemsIntoTable(jTable1); 
-        // addingItemsIntoTable(jTable1); 
     }
     
     //  - - - - - - - - - - - - - 
@@ -43,7 +40,6 @@ public class info_receptionists_DB_Form extends javax.swing.JFrame {
     public void addingItemsIntoTable(JTable myGuestTable)
     {                        
          String slctQry_1 = String.format("SELECT * FROM `users` WHERE `receptionist_hotel_name`='%s'", HName);
-        // String slctQry_1 = "SELECT * FROM `users` WHERE 1";
         try {
             PreparedStatement PrepaSt_1 = mycon1.devConnect().prepareStatement(slctQry_1);
             ResultSet ResSet_1 = PrepaSt_1.executeQuery();
@@ -167,7 +163,6 @@ public class info_receptionists_DB_Form extends javax.swing.JFrame {
                 
         String uName = search_by_receptionist_uName_textBox1.getText();
        
-       // String slctQry_1 = "SELECT * FROM `users` WHERE `user` LIKE '%"+uName+"%'";
         String slctQry_1 = String.format("SELECT * FROM `users` WHERE `user` LIKE '%s' AND `receptionist_hotel_name`='%s'",uName, HName);
         try {            
             PreparedStatement PrepaSt_1 = mycon1.devConnect().prepareStatement(slctQry_1);

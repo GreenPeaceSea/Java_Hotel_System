@@ -20,7 +20,12 @@ public class guestsForm extends javax.swing.JFrame {
         
         gcObj1.addingItemsIntoTable(jTable1); 
         
-        // textBox1_Guest_Rating.setEditable(false);
+        textBox1_Guest_Rating.setEditable(false); /* Не позволява писане в полето - идеята е по подразбиране да 
+            не може дда се въвежда нищо, но по-късно ако се селектира гост на хотела - да бъде променен достъпът
+            до полето, тъй като рецепционистът сам може да постави оценка на клиент (извън метода предназнаен за това)
+        */
+                
+        textBox1_Guest_ID.setEditable(false);   //Не позволява писане в полето      
     }
 
     /**
@@ -184,14 +189,9 @@ public class guestsForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btn1_guests_clear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn1_guests_remove, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btn1_guests_creation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn1_guests_edit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(44, 44, 44)
-                            .addComponent(SuccessOrNot_label1))
+                        .addComponent(btn1_guests_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn1_guests_remove)
+                        .addComponent(btn1_guests_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
@@ -212,14 +212,16 @@ public class guestsForm extends javax.swing.JFrame {
                                         .addComponent(jLabel2)
                                         .addGap(18, 18, 18)
                                         .addComponent(textBox1_Guest_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(textBox1_Guest_Last_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-            .addGap(18, 18, 18)
+                                    .addComponent(textBox1_Guest_Last_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btn1_guests_creation, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGap(29, 29, 29)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel7)
-                        .addComponent(btn1_guests_clear1))
+                        .addComponent(btn1_guests_clear1)
+                        .addComponent(SuccessOrNot_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addContainerGap())
     );
@@ -259,16 +261,17 @@ public class guestsForm extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addComponent(textBox1_Guest_Rating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(131, 131, 131)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn1_guests_creation)
-                        .addComponent(SuccessOrNot_label1))
+                    .addComponent(btn1_guests_creation)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(btn1_guests_edit))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btn1_guests_remove)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btn1_guests_clear)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(btn1_guests_remove)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btn1_guests_clear))
+                .addComponent(SuccessOrNot_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
@@ -297,11 +300,24 @@ public class guestsForm extends javax.swing.JFrame {
         textBox1_Guest_Rating.setText("");
     }//GEN-LAST:event_btn1_guests_clearActionPerformed
 
+    private void clealAllFields_method()
+    {
+        textBox1_Guest_ID.setText("");
+        textBox1_Guest_First_Name.setText("");
+        textBox1_Guest_Last_Name.setText("");
+        textBox1_Guest_GSM.setText("");
+        textBox1_Guest_EMail.setText("");
+        textBox1_Guest_Rating.setText("");
+    }
+    
     private void btn1_guests_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_guests_removeActionPerformed
         int gID = Integer.valueOf(textBox1_Guest_ID.getText());
         if(gcObj1.delGuest(gID))
             {
                 showMessageDialog(null, "You have deleted it successfully! ", "Successful", INFORMATION_MESSAGE);
+                
+                clealAllFields_method();
+                refresh_table();
             }else
             {
                 showMessageDialog(null, "You have NOT deleted it successfully! ", "Error", ERROR_MESSAGE);
@@ -324,6 +340,9 @@ public class guestsForm extends javax.swing.JFrame {
             if(gcObj1.editingSelectedGuest(gID, _FN, _LN, _GSM, _Email, _Rating))
             {
                 showMessageDialog(null, "You have edited it successfully! ", "Successful", INFORMATION_MESSAGE);
+                
+                clealAllFields_method();
+                refresh_table();
             }else
             {
                 showMessageDialog(null, "You have NOT edited it successfully! ", "Error", ERROR_MESSAGE);
@@ -352,6 +371,9 @@ public class guestsForm extends javax.swing.JFrame {
             if(gcObj1.AddingGuests(_FN, _LN, _GSM, _Email)) 
             {
                 SuccessOrNot_label1.setText("Successfully Added");
+                
+                clealAllFields_method();
+                refresh_table();
             }else
             {
                 SuccessOrNot_label1.setText("Something Went Wrong");
@@ -379,15 +401,28 @@ public class guestsForm extends javax.swing.JFrame {
             showMessageDialog(null, "Hazard guest! ", "Error", ERROR_MESSAGE);
         }
         
+        set_Guest_Rating_Field_Editable(); // прави възможно писането в полето за рейтинг на госта при селектиране на ред от таблицата
     }//GEN-LAST:event_jTable1MouseClicked
 
+    
+    private void set_Guest_Rating_Field_Editable()
+    {
+       textBox1_Guest_Rating.setEditable(true);
+    }
         
     private void btn1_guests_clear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1_guests_clear1ActionPerformed
       jTable1.setModel(new DefaultTableModel(null, new Object[]{"Guest ID", "First Name", "Last Name", "GSM", "E-Mail", "Guest Rating"})); 
         
-        gcObj1.addingItemsIntoTable(jTable1);
+      gcObj1.addingItemsIntoTable(jTable1);
     }//GEN-LAST:event_btn1_guests_clear1ActionPerformed
 
+    // Refresh table method - jTable1
+    private void refresh_table(){                                                   
+       jTable1.setModel(new DefaultTableModel(null, new Object[]{"Guest ID", "First Name", "Last Name", "GSM", "E-Mail", "Guest Rating"})); 
+        
+       gcObj1.addingItemsIntoTable(jTable1);
+    } 
+    
     private void textBox1_Guest_RatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBox1_Guest_RatingActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textBox1_Guest_RatingActionPerformed

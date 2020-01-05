@@ -60,16 +60,9 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="btn1_guests_clear" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="btn1_guests_remove" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btn1_guests_creation" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="btn1_guests_edit" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="SuccessOrNot_label1" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btn1_guests_clear" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btn1_guests_remove" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn1_guests_edit" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -98,16 +91,18 @@
                                       </Group>
                                   </Group>
                               </Group>
+                              <Component id="btn1_guests_creation" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" pref="544" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <Component id="btn1_guests_clear1" min="-2" max="-2" attributes="0"/>
+                              <Component id="SuccessOrNot_label1" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -161,19 +156,21 @@
                               <Component id="textBox1_Guest_Rating" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btn1_guests_creation" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="SuccessOrNot_label1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="btn1_guests_creation" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btn1_guests_edit" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="259" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn1_guests_remove" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn1_guests_clear" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="btn1_guests_remove" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btn1_guests_clear" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="SuccessOrNot_label1" min="-2" pref="14" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>

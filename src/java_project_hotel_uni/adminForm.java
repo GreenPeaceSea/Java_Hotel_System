@@ -6,13 +6,10 @@
 package java_project_hotel_uni;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class adminForm extends javax.swing.JFrame {
@@ -164,7 +161,6 @@ public class adminForm extends javax.swing.JFrame {
 
     private boolean AddingOwner(String UN, String UP, String HN)
     {
-        ResultSet RstSt_1 = null;
         String qry = "INSERT INTO `owners`(`owners_username`, `owners_password`, `hotel_name`) VALUES (?,?,?)";
         
         try {

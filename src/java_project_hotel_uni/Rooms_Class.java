@@ -113,7 +113,6 @@ public class Rooms_Class {
     
     public boolean AddingRooms(int number, int room_Type, String GSM)
     {
-        ResultSet RstSt_1 = null;
         String qry = "INSERT INTO `rooms`(`Rnumber`, `Rtype`, `RGSM`, `Rreserved`) VALUES (?,?,?,?)";
         
         try {
@@ -137,7 +136,6 @@ public class Rooms_Class {
     public boolean editingSelectedRoom(int number, int room_Type, String GSM, String isFree) 
     {
 
-        ResultSet RstSt_1 = null;
         String qry_editingSelectedGuest = "UPDATE `rooms` SET `Rtype`=?,`RGSM`=?,`Rreserved`=? WHERE `Rnumber`=?";
         
         try {
@@ -160,7 +158,6 @@ public class Rooms_Class {
 
     public boolean delRoom(int rNumber) 
     {        
-        ResultSet RstSt_1 = null;
         String qryDELETE = "DELETE FROM `rooms` WHERE `Rnumber`=?";
         
         try {
@@ -180,7 +177,6 @@ public class Rooms_Class {
     public boolean setingRoomToReserved(int number, String isFree) 
     {
 
-        ResultSet RstSt_1 = null;
         String qry_editingSelectedGuest = "UPDATE `rooms` SET `Rreserved`=? WHERE `Rnumber`=?";
         
         try {

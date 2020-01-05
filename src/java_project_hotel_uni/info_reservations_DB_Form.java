@@ -8,7 +8,6 @@ package java_project_hotel_uni;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,13 +15,8 @@ import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.DefaultTableModel;
 
-import java.util.Date;
 import javax.swing.JTable;
 
-/**
- *
- * @author kom6i
- */
 public class info_reservations_DB_Form extends javax.swing.JFrame {
 
     Reservation_Class reserv_class_obj1 = new Reservation_Class();
@@ -32,7 +26,6 @@ public class info_reservations_DB_Form extends javax.swing.JFrame {
     public info_reservations_DB_Form() {
         initComponents();
         
-        // reserv_class_obj1.addingReservationsIntoTable(jTable1);
         addingReservationsIntoTable(jTable1);
     }
     
@@ -213,7 +206,6 @@ jPanel1Layout.setHorizontalGroup(
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void search_by_date_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_by_date_btn1ActionPerformed
-       // String uName = textBox1_guest_ID.getText();
         
         try{
         // -- -- -- -- -- 
@@ -224,15 +216,7 @@ jPanel1Layout.setHorizontalGroup(
         String dateCame = Date_Format.format(dateCame_var);
         String Date_Went = Date_Format.format(dateWent_var);
         
-        
-        // - - - - -- - -
-        java.util.Date today = new java.util.Date();
-        java.util.Date dateIn=new SimpleDateFormat("yyyy-MM-dd").parse(dateCame);
-        java.util.Date dateOut=new SimpleDateFormat("yyyy-MM-dd").parse(Date_Went);
-        
-        // - - - - -- - -
-        
-        String slctQry_1 = String.format("SELECT * FROM `reservations` WHERE `date_came`>='%s' AND `date_came`<='%s'",dateCame, Date_Went ); //!!!
+        String slctQry_1 = String.format("SELECT * FROM `reservations` WHERE `date_came`>='%s' AND `date_came`<='%s'",dateCame, Date_Went );
                   
         try {            
             PreparedStatement PrepaSt_1 = mysqlconn_obj1.devConnect().prepareStatement(slctQry_1);
@@ -259,8 +243,6 @@ jPanel1Layout.setHorizontalGroup(
         }catch(NumberFormatException e)
         {
             showMessageDialog(null, e.getMessage(), "ERROR", ERROR_MESSAGE);
-        } catch (ParseException ex) {
-            Logger.getLogger(reservationsForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
        

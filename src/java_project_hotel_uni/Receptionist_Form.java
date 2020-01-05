@@ -3,9 +3,9 @@ package java_project_hotel_uni;
 
 import javax.swing.JFrame;
 
-public class Insider extends javax.swing.JFrame {
+public class Receptionist_Form extends javax.swing.JFrame {
 
-    public Insider() {
+    public Receptionist_Form() {
         initComponents();
     }
     
@@ -38,7 +38,7 @@ public class Insider extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,7 +121,7 @@ public class Insider extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Insider().setVisible(true);
+                new Receptionist_Form().setVisible(true);
             }
         });
     }
