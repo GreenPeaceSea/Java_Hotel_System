@@ -94,6 +94,11 @@ public class guestsForm extends javax.swing.JFrame {
                 textBox1_Guest_First_NameActionPerformed(evt);
             }
         });
+        textBox1_Guest_First_Name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textBox1_Guest_First_NameKeyPressed(evt);
+            }
+        });
 
         textBox1_Guest_ID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -451,6 +456,10 @@ public class guestsForm extends javax.swing.JFrame {
     private void textBox1_Guest_First_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBox1_Guest_First_NameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textBox1_Guest_First_NameActionPerformed
+
+    private void textBox1_Guest_First_NameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textBox1_Guest_First_NameKeyPressed
+        
+    }//GEN-LAST:event_textBox1_Guest_First_NameKeyPressed
 
     Robot rob;
     public void restrict_GSM_TextFieldInput(java.awt.event.KeyEvent evt, int length_of_field) //Позволява (в случая) числата само от 0-9, backspace, delete, shift (за използване на '+') и '+'

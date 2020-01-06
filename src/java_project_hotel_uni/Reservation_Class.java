@@ -22,7 +22,6 @@ public class Reservation_Class {
     
     public boolean AddingReservation(int guestID, int roomNum, String dateCame, String dateWent, String receptName)
     {         
-        ResultSet RstSt_1 = null;
         String qry = "INSERT INTO `reservations`(`guestID`, `rNumber`, `date_came`, `date_went`, `recept_that_made_reserv`, `cancelled_reservation_reason`) VALUES (?,?,?,?,?,?)";
         
         try {
