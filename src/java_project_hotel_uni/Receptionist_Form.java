@@ -1,6 +1,8 @@
 
 package java_project_hotel_uni;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class Receptionist_Form extends javax.swing.JFrame {
@@ -16,6 +19,21 @@ public class Receptionist_Form extends javax.swing.JFrame {
         initComponents();
         
         adding_ENDING_ReservationsIntoTable(jTable1);
+        
+// - - - - - - - - - -- - - - - -  
+        // всеки 1ви ред във таблицата да е син и всеки 2ри да е сив :
+        jTable1.setDefaultRenderer(Object.class, new DefaultTableCellRenderer()
+        {
+          @Override
+           public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+           {
+              final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+              c.setBackground(row % 2 == 0 ? Color.BLUE : Color.LIGHT_GRAY);
+              return c;
+           }
+        });
+        
+// - - - - - - - - - - - -- - -         
     }
     
     my_SQL_Connect_Class mysqlconn_reservation_obj1 = new my_SQL_Connect_Class();
@@ -58,7 +76,7 @@ public class Receptionist_Form extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went", "Cancelled Reserv."
+                "Reservation ID", "Guest ID", "Room Number", "Date_Came", "Date_went"
             }
         )
 
@@ -162,7 +180,7 @@ public class Receptionist_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     // метод за извеждане в таблицата клиентите 4иито резервации изтиат в текущия ден
-    public void adding_ENDING_ReservationsIntoTable(JTable myGuestTable) 
+    private void adding_ENDING_ReservationsIntoTable(JTable myGuestTable) 
     {                        
         
         String todays_Date = java.time.LocalDate.now().toString(); //Формат : yyyy-MM-dd
