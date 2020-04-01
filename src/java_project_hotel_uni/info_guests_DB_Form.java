@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class info_guests_DB_Form extends javax.swing.JFrame {
-
+    
     GuestClass gcObj1 = new GuestClass();
     my_SQL_Connect_Class mycon1 = new my_SQL_Connect_Class();
     

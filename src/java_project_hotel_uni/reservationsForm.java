@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
@@ -66,13 +67,13 @@ public class reservationsForm extends javax.swing.JFrame {
         SuccessOrNot_label1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btn1_guests_clear1 = new javax.swing.JButton();
-        dateChooser_Date_Came = new datechooser.beans.DateChooserCombo();
-        dateChooser_Date_Went = new datechooser.beans.DateChooserCombo();
         jLabel1 = new javax.swing.JLabel();
         type_of_cancellation_textBox1 = new javax.swing.JTextField();
         most_recent_reservations_btn1 = new javax.swing.JButton();
         show_all_reservations_btn2 = new javax.swing.JButton();
         extra_services_btn1 = new javax.swing.JButton();
+        dateChooser_Date_Came = new com.toedter.calendar.JDateChooser();
+        dateChooser_Date_Went = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,58 +186,16 @@ public class reservationsForm extends javax.swing.JFrame {
         }
     });
 
-    dateChooser_Date_Came.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
-        new datechooser.view.appearance.ViewAppearance("custom",
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(0, 0, 255),
-                true,
-                true,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 255),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(128, 128, 128),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.LabelPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.LabelPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(255, 0, 0),
-                false,
-                false,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            (datechooser.view.BackRenderer)null,
-            false,
-            true)));
+    jLabel1.setFont(new java.awt.Font("Lucida Bright", 0, 14)); // NOI18N
+    jLabel1.setText("Type Of Cancellation :");
 
-jLabel1.setFont(new java.awt.Font("Lucida Bright", 0, 14)); // NOI18N
-jLabel1.setText("Type Of Cancellation :");
-
-most_recent_reservations_btn1.setBackground(new java.awt.Color(204, 0, 51));
-most_recent_reservations_btn1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-most_recent_reservations_btn1.setText("Most Recent");
-most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListener() {
-    public void actionPerformed(java.awt.event.ActionEvent evt) {
-        most_recent_reservations_btn1ActionPerformed(evt);
-    }
+    most_recent_reservations_btn1.setBackground(new java.awt.Color(204, 0, 51));
+    most_recent_reservations_btn1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+    most_recent_reservations_btn1.setText("Most Recent");
+    most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            most_recent_reservations_btn1ActionPerformed(evt);
+        }
     });
 
     show_all_reservations_btn2.setBackground(new java.awt.Color(204, 0, 51));
@@ -278,12 +237,12 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SuccessOrNot_label1))
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel2)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4)
-                            .addGap(18, 18, 18)
-                            .addComponent(dateChooser_Date_Came, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(dateChooser_Date_Came, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(jLabel3)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,9 +256,9 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                                         .addComponent(textBox1_Room_Number, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(textBox1_Reservation_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(15, 15, 15)
-                                    .addComponent(dateChooser_Date_Went, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGap(0, 17, Short.MAX_VALUE)))
+                                    .addGap(7, 7, 7)
+                                    .addComponent(dateChooser_Date_Went, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGap(0, 24, Short.MAX_VALUE)))
             .addGap(18, 18, 18)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -332,25 +291,29 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(textBox1_Reservation_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(25, 25, 25)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel3)
-                                .addComponent(textBox1_Guest_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(27, 27, 27)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel5)
-                                .addComponent(textBox1_Room_Number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(22, 22, 22)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(textBox1_Reservation_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(25, 25, 25)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel3)
+                                        .addComponent(textBox1_Guest_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(27, 27, 27)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel5)
+                                        .addComponent(textBox1_Room_Number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(22, 22, 22)
+                                    .addComponent(jLabel4))
                                 .addComponent(dateChooser_Date_Came, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(25, 25, 25)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6)
-                                .addComponent(dateChooser_Date_Went, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(25, 25, 25)
+                                    .addComponent(jLabel6))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(dateChooser_Date_Went, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btn1_reservation_creation)
@@ -401,22 +364,9 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
         String dateValue1 = DfTblMl_1.getValueAt(selectedLine, 4).toString();
 
         
-        try {
-            java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            java.util.Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue1);
-            
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);            
-            dateChooser_Date_Came.setSelectedDate(cal);
-            
-            Calendar cal1 = Calendar.getInstance();
-            cal1.setTime(date1);   
-            dateChooser_Date_Went.setSelectedDate(cal1);
-            
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(reservationsForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Date date = new Date();
+        dateChooser_Date_Came.setDate(date);
+        dateChooser_Date_Went.setDate(date);
         
                         
     }//GEN-LAST:event_jTable1MouseClicked
@@ -431,8 +381,8 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
             
             // ------------
             SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date dateCame_var = (dateChooser_Date_Came.getSelectedDate()).getTime();
-            java.util.Date dateWent_var = (dateChooser_Date_Went.getSelectedDate()).getTime();
+            java.util.Date dateCame_var = dateChooser_Date_Came.getDate();
+            java.util.Date dateWent_var = dateChooser_Date_Went.getDate();
             String dateCame = Date_Format.format(dateCame_var);
             String Date_Went = Date_Format.format(dateWent_var);
             
@@ -619,8 +569,8 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
          
         // -- -- -- -- -- 
         SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date dateCame_var = (dateChooser_Date_Came.getSelectedDate()).getTime();
-        java.util.Date dateWent_var = (dateChooser_Date_Went.getSelectedDate()).getTime();
+        java.util.Date dateCame_var = dateChooser_Date_Came.getDate();
+        java.util.Date dateWent_var = dateChooser_Date_Went.getDate();
         String dateCame = Date_Format.format(dateCame_var);
         String Date_Went = Date_Format.format(dateWent_var);
         
@@ -709,8 +659,9 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
         textBox1_Room_Number.setText("");
         
         //ресетване на датите (null) в двата dateChooser-a :
-        dateChooser_Date_Came.setCurrent(null);
-        dateChooser_Date_Went.setCurrent(null);
+        Date date = new Date();
+        dateChooser_Date_Came.setDate(date);
+        dateChooser_Date_Went.setDate(date);
     }//GEN-LAST:event_btn1_guests_clearActionPerformed
 
     
@@ -796,8 +747,8 @@ most_recent_reservations_btn1.addActionListener(new java.awt.event.ActionListene
     private javax.swing.JButton btn1_guests_remove;
     private javax.swing.JButton btn1_reservation_creation;
     private javax.swing.JButton btn1_reservation_edit;
-    private datechooser.beans.DateChooserCombo dateChooser_Date_Came;
-    private datechooser.beans.DateChooserCombo dateChooser_Date_Went;
+    private com.toedter.calendar.JDateChooser dateChooser_Date_Came;
+    private com.toedter.calendar.JDateChooser dateChooser_Date_Went;
     private javax.swing.JButton extra_services_btn1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -330,8 +330,8 @@ public class Form_Login extends javax.swing.JFrame {
                 new Form_Login().setVisible(true);
             }
         });
-    }
-
+    }        
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton admin_RadioButton;
     private javax.swing.JButton btn1_login;

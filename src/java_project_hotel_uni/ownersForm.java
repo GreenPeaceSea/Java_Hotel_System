@@ -234,8 +234,7 @@ public class ownersForm extends javax.swing.JFrame {
     }//GEN-LAST:event_created_reservations_btn4ActionPerformed
 
     private boolean AddingManager(String UN, String UP)
-    {
-        ResultSet RstSt_1 = null;
+    {       
         String qry = "INSERT INTO `manager`(`manager_username`, `manager_password`, `manager_hotel_name`) VALUES (?,?,?)";
         String MHN = getHotelNameOfTheOwner(username_of_onwer); 
         try {

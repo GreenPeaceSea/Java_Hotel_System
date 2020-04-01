@@ -1,6 +1,5 @@
 
 package java_project_hotel_uni;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
